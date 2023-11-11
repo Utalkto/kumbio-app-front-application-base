@@ -5,6 +5,7 @@ export default function Home() {
 		<main>
 			<p>Hi Kumbio</p>
 			<Button variant="contained">BTN Kumbio</Button>
+			<Button variant="contained">BTN Kumbio</Button>
 		</main>
 	);
 }
