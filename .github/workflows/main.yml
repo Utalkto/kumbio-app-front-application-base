@@ -30,10 +30,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release
-
-      - name: Merge Release into Main
-        run: |
-          git fetch
-          git checkout main
-          git merge --no-ff origin/release --no-edit
-          git push origin main
