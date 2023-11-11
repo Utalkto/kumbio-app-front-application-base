@@ -8,6 +8,7 @@ export default function Home() {
 			<p>Hi Kumbio2</p>
 			<Button variant="contained">BTN Kumbio</Button>
 			<Button variant="contained">BTN Kumbio</Button>
+			<Button variant="contained">BTN Kumbio</Button>
 		</main>
 	);
 }
