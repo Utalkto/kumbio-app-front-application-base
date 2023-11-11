@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.1.0...v1.1.1) (2023-11-11)
+
+
+### Bug Fixes
+
+* remove merge to main actions ([2ef9ef8](https://github.com/Utalkto/kumbio-app-front-application-base/commit/2ef9ef8c9033113fd051bbbcdc00e1eb1d079cf9))
+
 # [1.1.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.0.1...v1.1.0) (2023-11-11)
 
 
