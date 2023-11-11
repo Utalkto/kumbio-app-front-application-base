@@ -3,7 +3,7 @@ name: Semantic Release CI/CD Workflow
 on:
   push:
     branches:
-      - main
+      - release
 
 jobs:
   build:
