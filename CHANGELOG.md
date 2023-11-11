@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.0.1...v1.1.0) (2023-11-11)
+
+
+### Features
+
+* add new action to workflow ([42ad0c6](https://github.com/Utalkto/kumbio-app-front-application-base/commit/42ad0c6d2ec14d6013b47d75b8a7ac1c2b2e8b11))
+
 ## [1.0.1](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.0.0...v1.0.1) (2023-11-11)
 
 
