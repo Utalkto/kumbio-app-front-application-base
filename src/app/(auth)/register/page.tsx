@@ -9,8 +9,7 @@ const RegisterPage = () => {
 			component={'main'}
 			margin={'auto'}
 			maxWidth={'500px'}
-			paddingInline={2}
-			height={'calc(100vh - 100px)'}
+			padding={2}
 			display={'flex'}
 			alignItems={'center'}
 			justifyContent={'center'}

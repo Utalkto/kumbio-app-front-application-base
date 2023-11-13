@@ -1,4 +1,3 @@
-import React from 'react';
 import { IRegisterFormValues } from './interfaces';
 
 const registerFormInitialValues: IRegisterFormValues = {
@@ -10,10 +9,11 @@ const registerFormInitialValues: IRegisterFormValues = {
 };
 
 export const useRegisterForm = () => {
-	const onRegisterUser = async (values: IRegisterFormValues) => [];
+	const onRegisterUser = async (values: IRegisterFormValues) => {};
 
 	return {
 		registerFormInitialValues,
+
 		onRegisterUser,
 	};
 };

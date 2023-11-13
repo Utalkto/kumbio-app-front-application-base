@@ -5,9 +5,10 @@ import { registerSchema } from '@/models';
 import { Formik, Form } from 'formik';
 import React from 'react';
 import { useRegisterForm } from '../../hooks';
-import { Stack, MenuItem, Typography } from '@mui/material';
+import { Stack, MenuItem, Typography, IconButton } from '@mui/material';
 import { Button, SelectInput } from '@/components';
 import Link from 'next/link';
+import { VisibilityOff, Visibility } from '@mui/icons-material';
 
 export const RegisterForm = () => {
 	const { registerFormInitialValues, onRegisterUser } = useRegisterForm();
