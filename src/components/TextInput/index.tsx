@@ -3,7 +3,7 @@ import { IconButton, TextField, TextFieldProps } from '@mui/material';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { useBoolean } from '@/hooks';
 
-const TextInput: FC<TextFieldProps> = (props) => {
+export const TextInput: FC<TextFieldProps> = (props) => {
 	const { value: showPassword, toggle: toggleShowPassword } = useBoolean();
 
 	return (
@@ -25,5 +25,3 @@ const TextInput: FC<TextFieldProps> = (props) => {
 		/>
 	);
 };
-
-export default TextInput;

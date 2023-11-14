@@ -8,7 +8,7 @@ const RegisterPage = () => {
 		<Stack
 			component={'main'}
 			margin={'auto'}
-			maxWidth={'500px'}
+			maxWidth={'400px'}
 			padding={2}
 			display={'flex'}
 			alignItems={'center'}
