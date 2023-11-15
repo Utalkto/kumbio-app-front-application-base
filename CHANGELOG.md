@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.1.1...v1.2.0) (2023-11-15)
+
+
+### Features
+
+* add register page form ([150114a](https://github.com/Utalkto/kumbio-app-front-application-base/commit/150114a934e0177f51834dc69bbd23ebf99285b6))
+* login form ([6979f4a](https://github.com/Utalkto/kumbio-app-front-application-base/commit/6979f4a5ba03e1eb1165503d67e8f9fc8b245a37))
+* WIP Login Page ([640d303](https://github.com/Utalkto/kumbio-app-front-application-base/commit/640d303c4d76166045a24e005a355632e35fde2d))
+
 ## [1.1.1](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.1.0...v1.1.1) (2023-11-11)
 
 
