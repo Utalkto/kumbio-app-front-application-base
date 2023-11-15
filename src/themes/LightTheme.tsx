@@ -10,4 +10,7 @@ export const lightTheme = createTheme({
 			main: BRAND_COLORS.secondary,
 		},
 	},
+	typography: {
+		fontFamily: 'inherit',
+	},
 });
