@@ -8,15 +8,27 @@ const RegisterPage = () => {
 		<Stack
 			component={'main'}
 			margin={'auto'}
-			maxWidth={'400px'}
+			maxWidth={'560px'}
 			padding={2}
 			display={'flex'}
 			alignItems={'center'}
 			justifyContent={'center'}
-			gap="40px"
+			minHeight={'100vh'}
+			
 		>
-			<Image src="/kumbio-logo.png" alt="Kumbio Logo" width={200} height={50} />
-			<RegisterForm />
+			<Stack
+				gap="40px"
+				display={'flex'}
+				alignItems={'center'}
+				justifyContent={'center'}
+				paddingX={2}
+				paddingY={3}
+				boxShadow={'0 .5rem 1rem #00000026'}
+				borderRadius={2}
+			>
+				<Image src="/kumbio-logo.png" alt="Kumbio Logo" width={200} height={50} />
+				<RegisterForm />
+			</Stack>
 		</Stack>
 	);
 };

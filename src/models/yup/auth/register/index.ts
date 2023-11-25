@@ -1,15 +1,16 @@
 import * as Yup from 'yup';
 
+
 export const registerSchema = Yup.object().shape({
-	organizationName: Yup.string().required(
-		'El nombre de la organización es requerido'
+	first_name: Yup.string().required(
+		'El nombre es requerido'
 	),
-	sector: Yup.number().required('El sector es requerido'),
+	phone_number: Yup.string().required('El número de teléfono es requerido'),
 	email: Yup.string()
 		.email('Correo Inválido')
 		.required('El correo es requerido'),
 	password: Yup.string()
 		.min(8, 'La constraseña debe de tener al menos 8 dígitos')
 		.required('La constraseña es requerida'),
-	country: Yup.string().required('El país es requerido'),
+	last_name: Yup.string().required('El apellido es requerido'),
 });
