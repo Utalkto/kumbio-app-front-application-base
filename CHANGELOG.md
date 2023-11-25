@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.2.0...v1.3.0) (2023-11-25)
+
+
+### Features
+
+* settings vscode and configuration middleware ([36895a5](https://github.com/Utalkto/kumbio-app-front-application-base/commit/36895a55002e03b8d11da96075d35cd6b97acf07))
+
 # [1.2.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.1.1...v1.2.0) (2023-11-15)
 
 
