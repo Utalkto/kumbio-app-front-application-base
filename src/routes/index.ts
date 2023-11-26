@@ -1,9 +1,9 @@
 export const protectedRoutes = [
 	{
-		path: '/',
+		path: '/settings',
 	},
 	{
-		path: '/settings',
+		path: '/dashboard',
 	},
 ];
 

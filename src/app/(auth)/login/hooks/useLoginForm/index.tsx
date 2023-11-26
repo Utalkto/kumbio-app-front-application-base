@@ -1,56 +1,38 @@
-import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { useLoginUserMutation } from "@/store/api";
-import { ILoginFormValues } from "@/interfaces/user";
-import { CookieService } from "@/services";
-
-
-
-
+import { CookieService, loginUserService, ILoginPayload } from '@/services';
+import { useMutation } from '@tanstack/react-query';
+import { ILoginFormValues } from './interfaces';
 
 const loginFormInitialValues: ILoginFormValues = {
 	email: '',
 	password: '',
 	rememberMe: false,
 };
-
-type ErrorResponse = {
-	non_field_errors?:  string[]
-}
-
 export const useLoginForm = () => {
 	const router = useRouter();
 
-	const [ onLogin ] = useLoginUserMutation();
-	const [isLoading, setisLoanding] = useState(false);
-	const [errs, setErrs] = useState<ErrorResponse>();
-
+	const { mutateAsync, isPending, isError } = useMutation({
+		mutationFn: (loginPayload: ILoginPayload) => loginUserService(loginPayload),
+	});
 
 	const onLoginUser = async (values: ILoginFormValues) => {
-		setisLoanding(true);
+		try {
+			const response = await mutateAsync({
+				email: values.email,
+				password: values.password,
+			});
 
-		onLogin(values)
-		.unwrap()
-		.then((resp)  => {
-			CookieService.saveCookie('token', resp.access_token);
-			router.push('/dashboard');
-		})
-		.catch((err: { data: ErrorResponse, status: number }) => {
-			
-			setErrs(err.data);
-			setisLoanding(false);
-		});
+			if (response) {
+				CookieService.saveCookie('token', response.access_token);
+				router.push('/dashboard');
+			}
+		} catch (error) {}
 	};
-
-	const resetErrs = () => {
-		setErrs(undefined);
-	}
 
 	return {
 		loginFormInitialValues,
-		isLoading,
-		errs,
+		isPending,
+		isError,
 		onLoginUser,
-		resetErrs
 	};
 };

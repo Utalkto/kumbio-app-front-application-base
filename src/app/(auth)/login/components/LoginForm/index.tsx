@@ -1,40 +1,36 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Alert, Checkbox, Collapse, IconButton, Stack, Typography } from '@mui/material';
+import { Alert, Checkbox, Stack, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import React from 'react';
-import CloseIcon from '@mui/icons-material/Close';
 
 import { useLoginForm } from '../../hooks';
 import { loginSchema } from '@/models';
-import { Button, CheckboxInput, TextInput } from '@/components';
-
-
+import {
+	Button,
+	CheckboxInput,
+	CircularBar,
+	SnackbarNotification,
+	TextInput,
+} from '@/components';
 
 export const LoginForm = () => {
-	const { loginFormInitialValues, onLoginUser, errs, resetErrs } = useLoginForm();
+	const { loginFormInitialValues, onLoginUser, isPending, isError } =
+		useLoginForm();
 
 	return (
 		<>
-			<Collapse in={errs ? true : false} sx={{marginBottom: 4}}>
-				<Alert  severity='error' sx={{ width: '100%' }}
-					action={
-						<IconButton
-							aria-label="close"
-							color="inherit"
-							size="small"
-							onClick={resetErrs}
-						>
-							<CloseIcon fontSize="inherit" />
-						</IconButton>
-					}
+			{isError && (
+				<SnackbarNotification
+					open={isError}
+					anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
 				>
-					{
-						errs?.non_field_errors && errs.non_field_errors[0]
-					}
-				</Alert>
-			</Collapse>
+					<Alert severity="error" sx={{ width: '100%' }}>
+						Usuario o contraseña incorrectos
+					</Alert>
+				</SnackbarNotification>
+			)}
 			<Formik
 				initialValues={loginFormInitialValues}
 				onSubmit={onLoginUser}
@@ -109,9 +105,19 @@ export const LoginForm = () => {
 									¿Olvidaste tu contraseña?
 								</Link>
 							</Stack>
-							<Button type="submit" variant="contained" fullWidth>
-								Ingresar
-							</Button>
+							{isPending && <CircularBar size={20} />}
+
+							{!isPending && (
+								<Button
+									type="submit"
+									variant="contained"
+									fullWidth
+									disabled={isPending}
+								>
+									Ingresar
+								</Button>
+							)}
+
 							<Typography variant="body2" align="center">
 								¿No tienes una cuenta?{' '}
 								<Link href="/register" style={{ fontSize: '14px' }}>

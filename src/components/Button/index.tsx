@@ -6,5 +6,15 @@ import { FC } from 'react';
 import { Props } from './interfaces';
 
 export const Button: FC<Props> = ({ children, ...props }) => {
-	return <MuiButton {...props}>{children}</MuiButton>;
+	return (
+		<MuiButton
+			{...props}
+			sx={{
+				...props.sx,
+				borderRadius: '1rem',
+			}}
+		>
+			{children}
+		</MuiButton>
+	);
 };

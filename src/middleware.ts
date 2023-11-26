@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { onIsProtectedRoute } from './routes';
+import { onIsProtectedRoute, onIsPublicRoute } from './routes';
 
 export async function middleware(request: NextRequest) {
 	const isToken = request.cookies.get('token') ? true : false;
@@ -8,8 +8,18 @@ export async function middleware(request: NextRequest) {
 
 	const isProtectedRoute = onIsProtectedRoute(pathname);
 
+	const isPublicRoute = onIsPublicRoute(pathname);
+
+	if (pathname === '/') {
+		return NextResponse.redirect(new URL('/dashboard', request.url));
+	}
+
 	if (isProtectedRoute && !isToken) {
 		return NextResponse.redirect(new URL('/login', request.url));
+	}
+
+	if (isPublicRoute && isToken) {
+		return NextResponse.redirect(new URL('/dashboard', request.url));
 	}
 
 	return NextResponse.next();

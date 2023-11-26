@@ -14,6 +14,8 @@
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.17",
     "@reduxjs/toolkit": "^1.9.7",
+    "@tanstack/react-query": "^5.8.7",
+    "@tanstack/react-query-devtools": "^5.8.7",
     "bcrypt": "^5.1.1",
     "formik": "^2.4.5",
     "js-cookie": "^3.0.5",
@@ -30,12 +32,14 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^9.2.3",
     "@semantic-release/release-notes-generator": "^12.1.0",
+    "@tanstack/eslint-plugin-query": "^5.8.4",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
+    "eslint-config-prettier": "^9.0.0",
     "semantic-release": "^22.0.7",
     "typescript": "^5"
   }

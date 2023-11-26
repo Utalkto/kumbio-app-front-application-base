@@ -9,9 +9,11 @@ export const TextInput: FC<TextFieldProps> = (props) => {
 	return (
 		<TextField
 			{...props}
+			size="small"
 			type={props.type === 'password' && showPassword ? 'text' : props.type}
 			InputProps={{
 				...props.InputProps,
+				sx: { ...props.InputProps?.sx, borderRadius: '1rem' },
 				endAdornment: props.type === 'password' && (
 					<IconButton onClick={toggleShowPassword}>
 						{showPassword ? (
