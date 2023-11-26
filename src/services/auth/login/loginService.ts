@@ -12,7 +12,6 @@ export const loginUserService = async (credentials: ILoginPayload) => {
 		});
 
 		if (!authResponse.ok) {
-			console.log({ authResponse });
 			throw new Error('Error al iniciar sesión');
 		}
 

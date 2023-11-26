@@ -1,11 +1,4 @@
-export const protectedRoutes = [
-	{
-		path: '/settings',
-	},
-	{
-		path: '/dashboard',
-	},
-];
+export const protectedRoutes = ['/', '/dashboard'];
 
 export const publicRoutes = [
 	{
@@ -17,7 +10,7 @@ export const publicRoutes = [
 ];
 
 export const onIsProtectedRoute = (path: string) =>
-	protectedRoutes.find((item) => item.path.includes(path));
+	protectedRoutes.find((item) => item.includes(path));
 
 export const onIsPublicRoute = (path: string) =>
 	publicRoutes.find((item) => item.path.includes(path));

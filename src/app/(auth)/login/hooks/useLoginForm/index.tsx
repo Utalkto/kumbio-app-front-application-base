@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import { CookieService, loginUserService, ILoginPayload } from '@/services';
 import { useMutation } from '@tanstack/react-query';
 import { ILoginFormValues } from './interfaces';
+import { signIn } from 'next-auth/react';
 
 const loginFormInitialValues: ILoginFormValues = {
 	email: '',
@@ -16,17 +17,28 @@ export const useLoginForm = () => {
 	});
 
 	const onLoginUser = async (values: ILoginFormValues) => {
-		try {
-			const response = await mutateAsync({
-				email: values.email,
-				password: values.password,
-			});
+		const response = await signIn('credentials', {
+			email: values.email,
+			password: values.password,
+			callbackUrl: `${window.location.origin}/dashboard`,
+		});
 
-			if (response) {
-				CookieService.saveCookie('token', response.access_token);
-				router.push('/dashboard');
-			}
-		} catch (error) {}
+		console.log({ response });
+
+		if (!response?.error) {
+			router.push('/dashboard');
+		}
+		// try {
+		// 	const response = await mutateAsync({
+		// 		email: values.email,
+		// 		password: values.password,
+		// 	});
+
+		// 	if (response) {
+		// 		CookieService.saveCookie('token', response.access_token);
+		// 		router.push('/dashboard');
+		// 	}
+		// } catch (error) {}
 	};
 
 	return {
