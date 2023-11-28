@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.3.0...v1.4.0) (2023-11-28)
+
+
+### Features
+
+* neax-auth ([0f7d2e8](https://github.com/Utalkto/kumbio-app-front-application-base/commit/0f7d2e889360f4a303010383523a2ec16ffd3084))
+* wip onboarding ([fae1439](https://github.com/Utalkto/kumbio-app-front-application-base/commit/fae14398785a424d6b35dbb90bf0fc7da18fc403))
+
 # [1.3.0](https://github.com/Utalkto/kumbio-app-front-application-base/compare/v1.2.0...v1.3.0) (2023-11-25)
 
 
