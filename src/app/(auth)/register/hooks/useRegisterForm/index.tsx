@@ -1,67 +1,53 @@
-import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { IRegisterFormValues, User } from "@/interfaces/user";
-import { useRegisterUserMutation } from "@/store/api/auth";
-import { CookieService } from "@/services";
-
+import {
+	CookieService,
+	IRegisterUserPayload,
+	registerUserService,
+} from '@/services';
+import { useMutation } from '@tanstack/react-query';
+import { IRegisterFormValues } from './interfaces';
+import { FormikHelpers } from 'formik';
 
 const registerFormInitialValues: IRegisterFormValues = {
 	first_name: '',
 	last_name: '',
 	phone_number: '',
 	email: '',
-	password: ''
-};
-
-
-type ErrorResponse = {
-	first_name?: 		string[];
-	last_name?: 		string[];
-	phone_number?: 		string[];	
-	email?: 			string[];
-	password?:			string[];
+	password: '',
 };
 
 export const useRegisterForm = () => {
-
 	const router = useRouter();
 
-	const [ registerUser ] = useRegisterUserMutation();
-	const [isLoading, setisLoanding] = useState(false);
-	const [errs, setErrs] = useState<ErrorResponse>();
-	const [success, setSuccess] = useState(false);
+	const { mutateAsync, isPending, isError } = useMutation({
+		mutationFn: (payload: IRegisterUserPayload) => registerUserService(payload),
+	});
 
-
-	const onRegisterUser = async (values: IRegisterFormValues) => {
-		setisLoanding(true);
-
-		registerUser(values)
-		.unwrap()
-		.then((resp)  => {
-			
-			setSuccess(true);
-			CookieService.saveCookie('token', resp.access_token);
-		
-			setTimeout(() => {
-				setSuccess(false);
-				console.log('resp 2', resp);
+	const onRegisterUser = async (
+		values: IRegisterFormValues,
+		formikHelpers: FormikHelpers<IRegisterFormValues>
+	) => {
+		try {
+			const response = await mutateAsync(values);
+			if (response.ok && response.data) {
+				CookieService.saveCookie('token', response.data.access_token);
 				router.push('/dashboard');
+			}
 
-			}, 1000);
-			
-		})
-		.catch((err: { data: ErrorResponse, status: number }) => {
-			
-			setErrs(err.data);
-			setisLoanding(false);
-		});
+			if (!response.ok && response.error) {
+				Object.entries(response.error).forEach(([key, value]) => {
+					formikHelpers.setFieldError(key, value[0]);
+				});
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return {
 		registerFormInitialValues,
-		isLoading,
-		errs,
-		success,
 		onRegisterUser,
+		isPending,
+		isError,
 	};
 };
