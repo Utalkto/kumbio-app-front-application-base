@@ -10,6 +10,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
 		<MuiDialog
 			{...props}
 			fullWidth
+			maxWidth="xs"
 			sx={{
 				'& .MuiDialog-container': {
 					alignItems: 'flex-start',

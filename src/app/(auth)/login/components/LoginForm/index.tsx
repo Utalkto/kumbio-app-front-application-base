@@ -16,14 +16,13 @@ import {
 } from '@/components';
 
 export const LoginForm = () => {
-	const { loginFormInitialValues, onLoginUser, isPending, isError } =
-		useLoginForm();
-
+	const { loginFormInitialValues, onLoginUser, status } = useLoginForm();
+	console.log({ status });
 	return (
 		<>
-			{isError && (
+			{status === 'error' && (
 				<SnackbarNotification
-					open={isError}
+					open={status === 'error'}
 					anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
 				>
 					<Alert severity="error" sx={{ width: '100%' }}>
@@ -105,15 +104,10 @@ export const LoginForm = () => {
 									¿Olvidaste tu contraseña?
 								</Link>
 							</Stack>
-							{isPending && <CircularBar size={20} />}
+							{status === 'pending' && <CircularBar size={20} />}
 
-							{!isPending && (
-								<Button
-									type="submit"
-									variant="contained"
-									fullWidth
-									disabled={isPending}
-								>
+							{status === 'idle' && (
+								<Button type="submit" variant="contained" fullWidth>
 									Ingresar
 								</Button>
 							)}
