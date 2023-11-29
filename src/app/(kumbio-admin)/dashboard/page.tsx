@@ -1,8 +1,5 @@
-import React from 'react';
-import { OnBoardingModal } from './components';
-
 const DashboardPage = () => {
-	return <OnBoardingModal />;
+	return <></>;
 };
 
 export default DashboardPage;

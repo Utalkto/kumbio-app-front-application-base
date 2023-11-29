@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useOnBoardingForm } from '..';
 
 const steps = [
 	{
@@ -17,6 +18,8 @@ export const useOnBoarding = () => {
 	const [completed] = useState<{
 		[k: number]: boolean;
 	}>({});
+
+	const { onBoardingFormInitialValues } = useOnBoardingForm();
 
 	return {
 		steps,
