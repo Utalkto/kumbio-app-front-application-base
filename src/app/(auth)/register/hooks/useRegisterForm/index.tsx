@@ -40,7 +40,7 @@ export const useRegisterForm = () => {
 				});
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
 	};
 
