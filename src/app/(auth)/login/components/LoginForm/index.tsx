@@ -17,7 +17,7 @@ import {
 
 export const LoginForm = () => {
 	const { loginFormInitialValues, onLoginUser, status } = useLoginForm();
-	console.log({ status });
+
 	return (
 		<>
 			{status === 'error' && (
