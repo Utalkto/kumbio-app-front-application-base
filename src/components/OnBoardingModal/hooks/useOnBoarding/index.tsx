@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useOnBoardingForm } from '..';
 
 const steps = [
@@ -9,21 +8,18 @@ const steps = [
 		title: 'Horario',
 	},
 	{
-		title: 'Servicios',
+		title: 'Servicio',
 	},
 ];
 
 export const useOnBoarding = () => {
-	const [activeStep] = useState<number>(0);
-	const [completed] = useState<{
-		[k: number]: boolean;
-	}>({});
-
-	const { onBoardingFormInitialValues } = useOnBoardingForm();
+	const { onBoardingFormInitialValues, onBoardingFormYupSchema, onSubmit } =
+		useOnBoardingForm();
 
 	return {
 		steps,
-		activeStep,
-		completed,
+		onBoardingFormInitialValues,
+		onSubmit,
+		onBoardingFormYupSchema,
 	};
 };

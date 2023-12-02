@@ -6,7 +6,15 @@ export const SelectInput: FC<SelectInputProps> = ({ children, ...props }) => {
 	return (
 		<FormControl fullWidth>
 			<InputLabel>{props.label}</InputLabel>
-			<Select {...props} label={props.label}>
+
+			<Select
+				{...props}
+				label={props.label}
+				size="small"
+				sx={{
+					borderRadius: '1rem',
+				}}
+			>
 				{children}
 			</Select>
 			{props.error && <FormHelperText error>{props.helpertext}</FormHelperText>}
