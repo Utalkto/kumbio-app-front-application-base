@@ -1,0 +1,32 @@
+import { Dashboard, ImportContacts, MenuBook, PeopleAlt, PostAdd } from "@mui/icons-material";
+
+
+export const mainNavigation = [
+  {
+    name: "Dashboard",
+    icon: Dashboard,
+    url: `/dashboard`,
+  },
+  {
+    name: "Posts",
+    icon: ImportContacts,
+    url: `/posts`,
+    navigationData: [
+      {
+        name: "All Posts",
+        icon: MenuBook,
+        url: `/posts/all`,
+      },
+      {
+        name: "Editor",
+        icon: PostAdd,
+        url: `/posts/editor`,
+      },
+    ],
+  },
+  {
+    name: "Users",
+    icon: PeopleAlt,
+    url: `/users`,
+  },
+];
