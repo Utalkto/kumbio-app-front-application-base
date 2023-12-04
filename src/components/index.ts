@@ -5,4 +5,5 @@ export * from './CheckboxInput';
 export * from './SnackbarNotification';
 export * from './CircularBar';
 export * from './Dialog';
-export * from './Navigation';
+export * from './Modal';
+export * from './TimeInput';

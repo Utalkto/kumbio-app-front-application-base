@@ -1,2 +1,2 @@
 export * from './envsLoad';
-export * from './navigationData';
+export * from './getAccessToken';
