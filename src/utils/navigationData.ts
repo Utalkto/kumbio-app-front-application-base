@@ -1,5 +1,14 @@
-import { Dashboard, ImportContacts, MenuBook, PeopleAlt, PostAdd } from "@mui/icons-material";
-
+import {
+  Badge,
+  CalendarMonth,
+  CreditCard,
+  Dashboard,
+  HomeRepairService,
+  LocationCity,
+  ManageAccounts,
+  PeopleAlt,
+  Settings,
+} from "@mui/icons-material";
 
 export const mainNavigation = [
   {
@@ -8,25 +17,45 @@ export const mainNavigation = [
     url: `/dashboard`,
   },
   {
-    name: "Posts",
-    icon: ImportContacts,
-    url: `/posts`,
-    navigationData: [
-      {
-        name: "All Posts",
-        icon: MenuBook,
-        url: `/posts/all`,
-      },
-      {
-        name: "Editor",
-        icon: PostAdd,
-        url: `/posts/editor`,
-      },
-    ],
+    name: "Calendario",
+    icon: CalendarMonth,
+    url: `/Calendar`,
   },
   {
-    name: "Users",
+    name: "Clientes",
     icon: PeopleAlt,
-    url: `/users`,
+    url: `/clients`,
+  },
+  {
+    name: "Transacciones",
+    icon: CreditCard,
+    url: `/transactions`,
+  },
+  {
+    name: "Organizacion",
+    icon: Settings,
+    url: `/organization`,
+    navigationData: [
+      {
+        name: "General",
+        icon: ManageAccounts,
+        url: `/organization/general`,
+      },
+      {
+        name: "Sedes",
+        icon: LocationCity,
+        url: `/organization/locations`,
+      },
+      {
+        name: "Servicios",
+        icon: HomeRepairService,
+        url: `/organization/locations`,
+      },
+      {
+        name: "Profesionales",
+        icon: Badge,
+        url: `/organization/locations`,
+      },
+    ],
   },
 ];

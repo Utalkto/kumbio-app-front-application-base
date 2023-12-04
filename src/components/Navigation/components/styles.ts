@@ -11,29 +11,35 @@ export const classes = {
   listItemText: `${PREFIX}-listItemText`,
   expanded: `${PREFIX}-expanded`,
   selected: `${PREFIX}-selected`,
+  collapselist: `${PREFIX}-collapselist`,
 };
 export const ListItemContainer = styled("div")(({ theme }) => ({
   [`&.${classes.root}`]: {
-    width: "95%",
+    width: "100%",
     margin: "4px auto",
-    borderRadius: "8px",
     transition: "all .5s",
     overflow: "hidden",
+    position: "relative",
   },
   [`& .${classes.listItem}`]: {
     transition: "all .5s",
     display: "flex",
     flexDirection: "column",
   },
-  [`& .${classes.listLink}`]: {
+  [`.${classes.listLink}`]: {
     padding: "0 15px",
     textDecoration: "none",
     color: "inherit",
-    transition: "all .5s",
+    transition: "all .2s",
     display: "flex",
     alignItems: "center",
     width: "100%",
   },
+
+  [`.${classes.listLink}:hover`]: {
+    color: theme.palette.primary.main,
+  },
+
   [`& .${classes.listLinkCollapsed}`]: {
     [theme.breakpoints.up("sm")]: {
       width: theme.spacing(7),
@@ -50,10 +56,29 @@ export const ListItemContainer = styled("div")(({ theme }) => ({
       fontSize: 9,
     },
   },
-  [`& .${classes.expanded}`]: {
-    backgroundColor: lighten(theme.palette.secondary.main, 0.1),
+  [`&.${classes.expanded}`]: {
+    backgroundColor: lighten(theme.palette.secondary.main, 0.9),
   },
-  [`& .${classes.selected}`]: {
-    backgroundColor: lighten(theme.palette.secondary.main, 0.3),
+  [`&.${classes.selected}`]: {
+    backgroundColor: lighten(theme.palette.secondary.main, 0.8),
+    color: theme.palette.primary.main,
+  },
+  [`&.${classes.selected}:after`]: {
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+      content: '""',
+      width: "4px",
+      height: "100%",
+      backgroundColor: theme.palette.primary.main,
+      position: "absolute",
+      right: "0px",
+      top: "0px",
+    },
+  },
+  [`&.${classes.selected} .${classes.listLink}`]: {
+    color: theme.palette.primary.main,
+  },
+  [`.${classes.collapselist}`]: {
+    paddingLeft: "20px",
   },
 }));

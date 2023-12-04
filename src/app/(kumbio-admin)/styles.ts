@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 
-const drawerWidth = 210;
+const drawerWidth = 250;
 
 export const DrawerClasses = {
   root: `DrawerContainer-root`,
@@ -21,6 +21,8 @@ export const DrawerContainer = styled("div")(({ theme }) => ({
     },
   },
   [`& .${DrawerClasses.toolbarIcon}`]: {
+    background: '#FFFFFF',
+    color: '#5B697A',
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
@@ -66,7 +68,9 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
 		display: "flex",
     height: "100vh",
   },
-  [`& .${LayoutClasses.appBarShift}`]: {
+  [`.${LayoutClasses.appBarShift}`]: {
+    backgroundColor:'#FFFFFF',
+    color: '#5B697A',
     [theme.breakpoints.up("sm")]: {
       zIndex: theme.zIndex.drawer + 2,
       transition: theme.transitions.create(["width", "margin"], {
@@ -75,7 +79,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
       }),
     },
   },
-  [`& .${LayoutClasses.appBar}`]: {
+  [`.${LayoutClasses.appBar}`]: {
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: `${drawerWidth}px`,
@@ -86,7 +90,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
       }),
     },
   },
-  [`& .${LayoutClasses.menuButton}`]: {
+  [`.${LayoutClasses.menuButton}`]: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none",
@@ -145,9 +149,8 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-
-    color: theme.palette.grey[100],
-    backgroundColor: theme.palette.secondary.main,
+    color: '#5B697A',
+    backgroundColor: theme.palette.background,
   },
   [`.${LayoutClasses.drawerPaperClose}`]: {
     [theme.breakpoints.up("sm")]: {

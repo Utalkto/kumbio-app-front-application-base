@@ -20,7 +20,9 @@ interface INavegationItemProps {
 }
 
 const NavigationItem = ({ item, collapsed }: INavegationItemProps) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
+  const isSelected = pathname.search(new RegExp(item.url, "g")) !== -1;
+  debugger
 
   // If navigation is nested
   const [open, setOpen] = React.useState(false);
@@ -42,9 +44,7 @@ const NavigationItem = ({ item, collapsed }: INavegationItemProps) => {
       className={clsx(
         classes.root,
         nested && open && classes.expanded,
-        pathname.search(new RegExp(item.url, "g")) !== -1 &&
-        !nested &&
-        classes.selected
+        isSelected && !nested && classes.selected
       )}>
       <ListItem
         className={clsx(classes.listItem)}
@@ -75,7 +75,7 @@ const NavigationItem = ({ item, collapsed }: INavegationItemProps) => {
 
       {nested && (
         <Collapse in={open} timeout='auto' unmountOnExit>
-          <List disablePadding>
+          <List disablePadding className={clsx(classes.collapselist)}>
             {item.navigationData && item.navigationData.map((nestedItem, i) => {
               return (
                 <NavigationItem

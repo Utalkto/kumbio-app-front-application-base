@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState } from 'react';
 import { Props } from './interfaces';
-import { lightTheme } from '@/themes/LightTheme';
+import theme from '@/themes';
 import { CacheProvider } from '@emotion/react';
 
 // This implementation is from emotion-js
@@ -56,7 +56,7 @@ export default function MaterialProvider(props: Props) {
 
 	return (
 		<CacheProvider value={cache}>
-			<ThemeProvider theme={lightTheme}>
+			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				{children}
 			</ThemeProvider>

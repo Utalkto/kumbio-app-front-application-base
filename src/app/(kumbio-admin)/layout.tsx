@@ -64,18 +64,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
       <Navigation data={mainNavigation} collapsed={!extended} />
       <Divider />
       <Toolbar className={DrawerClasses.drawerFooter}>
-        <Typography component="p" variant="body2" align="center">
-          <a
-            href="https://trutoro.io"
-            className={DrawerClasses.copyrightText}
-            rel="noreferrer"
-            target="_blank"
-          >
-            Made with&nbsp;
-            <Favorite fontSize="small" />
-            &nbsp;by&nbsp;Trutoro
-          </a>
-        </Typography>
       </Toolbar>
     </DrawerContainer>
   );
