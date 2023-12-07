@@ -12,6 +12,7 @@ export interface IOnboardingOrganizationServiceResponse {
 	country: number;
 	currency: string;
 	how_you_know_us: string;
+	id: number;
 }
 
 export interface IOnboardingProfessionalServicePayload {
@@ -21,18 +22,18 @@ export interface IOnboardingProfessionalServicePayload {
 
 interface IProfessionalSchedule {
 	day: IDayWorks;
-	startHour: Date;
-	endHour: Date;
+	hour_init: string;
+	hour_end: string;
 }
 
 type IDayWorks =
-	| 'Lunes'
-	| 'Martes'
-	| 'Miércoles'
-	| 'Jueves'
-	| 'Viernes'
-	| 'Sábado'
-	| 'Domingo';
+	| 'MONDAY'
+	| 'TUESDAY'
+	| 'WEDNESDAY'
+	| 'THURSDAY'
+	| 'FRIDAY'
+	| 'SATURDAY'
+	| 'SUNDAY';
 
 export interface IOnboardingServiceServicePayload {
 	professionalId: number;
