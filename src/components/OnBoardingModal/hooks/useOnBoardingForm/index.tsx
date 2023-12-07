@@ -2,6 +2,10 @@ import { onBoardingFormYupSchema } from '@/models';
 import { IOnboardingForm } from '../../interfaces';
 import { FormikHelpers } from 'formik';
 import dayjs from 'dayjs';
+import {
+	onBoardingOrganizationService,
+	onBoardingProfessionalService,
+} from '@/services';
 
 const onBoardingFormInitialValues: IOnboardingForm = {
 	step: 0,
@@ -14,7 +18,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 	},
 	dayWorks: [
 		{
-			day: 'Lunes',
+			day: 'MONDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -22,7 +26,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			active: true,
 		},
 		{
-			day: 'Martes',
+			day: 'TUESDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -30,7 +34,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			active: true,
 		},
 		{
-			day: 'Miércoles',
+			day: 'WEDNESDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -38,7 +42,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			active: true,
 		},
 		{
-			day: 'Jueves',
+			day: 'THURSDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -46,7 +50,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			active: true,
 		},
 		{
-			day: 'Viernes',
+			day: 'FRIDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -54,7 +58,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			active: true,
 		},
 		{
-			day: 'Sábado',
+			day: 'SATURDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -62,7 +66,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			active: false,
 		},
 		{
-			day: 'Domingo',
+			day: 'SUNDAY',
 			// Start hour at 8:00
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
@@ -100,27 +104,23 @@ export const useOnBoardingForm = () => {
 			formikHelpers.setFieldValue('step', 3);
 			formikHelpers.setFieldValue('completedSteps.2', true);
 
-			// const organizationResponse = await onBoardingOrganizationService({
-			// 	name: values.bussines.name,
-			// 	sub_sector: values.bussines.sector,
-			// 	how_you_know_us: values.bussines.howDidYouKnow,
-			// 	country: values.bussines.country,
-			// });
+			const organizationResponse = await onBoardingOrganizationService({
+				name: values.bussines.name,
+				sub_sector: values.bussines.sector,
+				how_you_know_us: values.bussines.howDidYouKnow,
+				country: values.bussines.country,
+			});
 
-			// const professionalResponse = await onBoardingProfessionalService({
-			// 	organization_id: organizationResponse,
-			// 	working_days: values.dayWorks.map((day) => ({
-			// 		day: day.day,
-			// 		start_hour: day.startHour,
-			// 		end_hour: day.endHour,
-			// 		active: day.active,
-			// 	})),
-			// 	service: {
-			// 		name: values.service.name,
-			// 		duration: values.service.duration,
-			// 		price: values.service.price,
-			// 	},
-			// });
+			const professionalResponse = await onBoardingProfessionalService({
+				sede_pk: organizationResponse.id,
+				professional_schedule: values.dayWorks.map((day) => ({
+					day: day.day,
+					hour_init: dayjs(day.startHour).format('HH:mm'),
+					hour_end: dayjs(day.endHour).format('HH:mm'),
+				})),
+			});
+
+			console.log(professionalResponse);
 		}
 	};
 

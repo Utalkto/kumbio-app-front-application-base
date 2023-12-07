@@ -1,11 +1,11 @@
-export type DAYSNAME =
-	| 'Lunes'
-	| 'Martes'
-	| 'Miércoles'
-	| 'Jueves'
-	| 'Viernes'
-	| 'Sábado'
-	| 'Domingo';
+type DAYSNAME =
+	| 'MONDAY'
+	| 'TUESDAY'
+	| 'WEDNESDAY'
+	| 'THURSDAY'
+	| 'FRIDAY'
+	| 'SATURDAY'
+	| 'SUNDAY';
 
 export interface IDAYS_NAME {
 	Monday: DAYSNAME;
@@ -18,22 +18,22 @@ export interface IDAYS_NAME {
 }
 
 export const DAYS_NAME: IDAYS_NAME = {
-	Monday: 'Lunes',
-	Tuesday: 'Martes',
-	Wednesday: 'Miércoles',
-	Thursday: 'Jueves',
-	Friday: 'Viernes',
-	Saturday: 'Sábado',
-	Sunday: 'Domingo',
+	Monday: 'MONDAY',
+	Tuesday: 'TUESDAY',
+	Wednesday: 'WEDNESDAY',
+	Thursday: 'THURSDAY',
+	Friday: 'FRIDAY',
+	Saturday: 'SATURDAY',
+	Sunday: 'SUNDAY',
 };
 
 // Array of days in spanish
 export const DAYS_NAME_ARRAY: DAYSNAME[] = [
-	'Lunes',
-	'Martes',
-	'Miércoles',
-	'Jueves',
-	'Viernes',
-	'Sábado',
-	'Domingo',
+	DAYS_NAME.Monday,
+	DAYS_NAME.Tuesday,
+	DAYS_NAME.Wednesday,
+	DAYS_NAME.Thursday,
+	DAYS_NAME.Friday,
+	DAYS_NAME.Saturday,
+	DAYS_NAME.Sunday,
 ];

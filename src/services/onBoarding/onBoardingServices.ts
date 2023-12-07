@@ -14,17 +14,14 @@ export const onBoardingOrganizationService = async (
 	const session = (await getSession()) as unknown as ISession | null;
 
 	try {
-		const response = await fetch(
-			`${baseUrl}/api/organizations/?tutorial=True`,
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Token ${session?.id}`,
-				},
-				body: JSON.stringify(payload),
-			}
-		);
+		const response = await fetch(`${baseUrl}/api/organizations/?tutorial=1`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Token ${session?.id}`,
+			},
+			body: JSON.stringify(payload),
+		});
 
 		if (!response.ok) {
 			throw new Error('Error al crear la organización');
@@ -42,6 +39,8 @@ export const onBoardingOrganizationService = async (
 export const onBoardingProfessionalService = async (
 	payload: IOnboardingProfessionalServicePayload
 ) => {
+	const session = (await getSession()) as unknown as ISession | null;
+
 	try {
 		const response = await fetch(
 			`${baseUrl}/api/professionals/schedule-onboarding/?tutorial=True`,
@@ -49,6 +48,7 @@ export const onBoardingProfessionalService = async (
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
+					Authorization: `Token ${session?.id}`,
 				},
 				body: JSON.stringify(payload),
 			}

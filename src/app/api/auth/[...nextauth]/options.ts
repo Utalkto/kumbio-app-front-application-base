@@ -16,6 +16,7 @@ export const authConfig: NextAuthOptions = {
 					});
 
 					if (res) {
+						console.log(res);
 						return {
 							email: res.user.email,
 							name: res.user.first_name,

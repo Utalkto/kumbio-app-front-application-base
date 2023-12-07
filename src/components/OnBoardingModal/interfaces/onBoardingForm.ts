@@ -23,13 +23,13 @@ export interface IOnboardingFormDayWorks {
 }
 
 export type IDayWorks =
-	| 'Lunes'
-	| 'Martes'
-	| 'Miércoles'
-	| 'Jueves'
-	| 'Viernes'
-	| 'Sábado'
-	| 'Domingo';
+	| 'MONDAY'
+	| 'TUESDAY'
+	| 'WEDNESDAY'
+	| 'THURSDAY'
+	| 'FRIDAY'
+	| 'SATURDAY'
+	| 'SUNDAY';
 
 export interface IOnboardingFormService {
 	name: string;

@@ -6,13 +6,13 @@ import dayjs from 'dayjs';
 import { ErrorMessage } from 'formik';
 
 export const WorkDaysForm = () => {
-	const { values, handleChange, handleBlur } = useWorkDaysForm();
+	const { values, handleChange, handleBlur, DAY_WORKS } = useWorkDaysForm();
 
 	return (
 		<>
 			<Grid container spacing={1}>
 				{values.dayWorks.map((workDay, index) => (
-					<Fragment key={workDay.day}>
+					<Fragment key={DAY_WORKS[workDay.day]}>
 						<Grid
 							item
 							xs={workDay.active ? 4 : 12}
