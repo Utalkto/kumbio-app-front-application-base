@@ -1,4 +1,4 @@
-// import { OnBoardingModal } from '@/components/OnBoardingModal';
+import { OnBoardingModal } from '@/components/OnBoardingModal';
 import { MainLayout } from '@/layouts';
 
 export default function AdminLayout({
@@ -8,7 +8,7 @@ export default function AdminLayout({
 }) {
 	return (
 		<>
-			{/* <OnBoardingModal /> */}
+			<OnBoardingModal />
 			<MainLayout>{children}</MainLayout>
 		</>
 	);

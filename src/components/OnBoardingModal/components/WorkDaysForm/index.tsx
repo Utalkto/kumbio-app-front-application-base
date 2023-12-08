@@ -25,7 +25,7 @@ export const WorkDaysForm = () => {
 								onBlur={handleBlur}
 								checked={workDay.active}
 								control={<Checkbox size="small" />}
-								label={workDay.day}
+								label={DAY_WORKS[workDay.day]}
 								sx={{
 									'& .MuiFormControlLabel-label': { fontSize: '0.8rem' },
 								}}
