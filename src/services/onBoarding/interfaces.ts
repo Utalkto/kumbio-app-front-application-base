@@ -13,6 +13,21 @@ export interface IOnboardingOrganizationServiceResponse {
 	currency: string;
 	how_you_know_us: string;
 	id: number;
+	organization_sedes: IOrganizationSedes[];
+}
+
+interface IOrganizationSedes {
+	id: number;
+	created: Date;
+	modified: Date;
+	name: string;
+	description: string | null;
+	sede_type: string;
+	address: string;
+	maps_url: string | null;
+	phone: string | null;
+	phone_aux: string | null;
+	organization: number;
 }
 
 export interface IOnboardingProfessionalServicePayload {
@@ -20,6 +35,11 @@ export interface IOnboardingProfessionalServicePayload {
 	sede_pk: number;
 }
 
+export interface IOnboardingProfessionalServiceResponse {
+	professional_schedule: IProfessionalSchedule[];
+	sede_pk: number;
+	professional_pk: number;
+}
 interface IProfessionalSchedule {
 	day: IDayWorks;
 	hour_init: string;
@@ -38,7 +58,7 @@ type IDayWorks =
 export interface IOnboardingServiceServicePayload {
 	professionalId: number;
 	service: IService;
-	sedePK: number;
+	sede_pk: number;
 }
 
 interface IService {

@@ -4,6 +4,7 @@ import {
 	IOnboardingOrganizationServicePayload,
 	IOnboardingOrganizationServiceResponse,
 	IOnboardingProfessionalServicePayload,
+	IOnboardingProfessionalServiceResponse,
 	IOnboardingServiceServicePayload,
 } from './interfaces';
 import { ISession } from '@/interfaces';
@@ -58,7 +59,8 @@ export const onBoardingProfessionalService = async (
 			throw new Error('Error al crear el profesional');
 		}
 
-		const responseJson = await response.json();
+		const responseJson: IOnboardingProfessionalServiceResponse =
+			await response.json();
 
 		return responseJson;
 	} catch (error) {
@@ -69,20 +71,18 @@ export const onBoardingProfessionalService = async (
 export const onBoardingServiceService = async (
 	payload: IOnboardingServiceServicePayload
 ) => {
-	const { professionalId, service, sedePK } = payload;
+	const session = (await getSession()) as unknown as ISession | null;
 
 	try {
 		const response = await fetch(
-			`${baseUrl}/api/professionals/${professionalId}/service/`,
+			`${baseUrl}/api/professionals/${payload.professionalId}/service/`,
 			{
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
+					Authorization: `Token ${session?.id}`,
 				},
-				body: JSON.stringify({
-					...service,
-					sede_pk: sedePK,
-				}),
+				body: JSON.stringify(payload),
 			}
 		);
 

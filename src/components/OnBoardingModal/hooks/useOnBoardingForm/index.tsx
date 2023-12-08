@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import {
 	onBoardingOrganizationService,
 	onBoardingProfessionalService,
+	onBoardingServiceService,
 } from '@/services';
 
 const onBoardingFormInitialValues: IOnboardingForm = {
@@ -112,7 +113,7 @@ export const useOnBoardingForm = () => {
 			});
 
 			const professionalResponse = await onBoardingProfessionalService({
-				sede_pk: organizationResponse.id,
+				sede_pk: organizationResponse.organization_sedes[0].id,
 				professional_schedule: values.dayWorks.map((day) => ({
 					day: day.day,
 					hour_init: dayjs(day.startHour).format('HH:mm'),
@@ -120,7 +121,15 @@ export const useOnBoardingForm = () => {
 				})),
 			});
 
-			console.log(professionalResponse);
+			await onBoardingServiceService({
+				service: {
+					name: values.service.name,
+					price: String(values.service.price),
+					duration: values.service.duration,
+				},
+				sede_pk: organizationResponse.organization_sedes[0].id,
+				professionalId: professionalResponse.professional_pk,
+			});
 		}
 	};
 
