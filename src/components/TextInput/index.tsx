@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC } from 'react';
 import { IconButton, TextField, TextFieldProps } from '@mui/material';
 import { VisibilityOff, Visibility } from '@mui/icons-material';

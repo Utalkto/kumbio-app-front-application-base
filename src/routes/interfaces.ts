@@ -1,3 +1,0 @@
-interface IRoutes {
-	path: string;
-}

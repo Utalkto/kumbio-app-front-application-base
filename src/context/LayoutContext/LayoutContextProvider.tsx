@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, PropsWithChildren, useReducer } from 'react';
 import { LayoutContext } from './LayoutContext';
 import { layoutReducer } from './layoutReducer';

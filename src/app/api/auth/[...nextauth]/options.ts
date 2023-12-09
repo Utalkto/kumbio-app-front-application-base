@@ -1,62 +1,64 @@
-import CredentialsProvider from 'next-auth/providers/credentials';
-import { NextAuthOptions } from 'next-auth';
-import { loginUserService } from '@/services';
+// import CredentialsProvider from 'next-auth/providers/credentials';
+// import { NextAuthOptions } from 'next-auth';
+// import { loginUserService } from '@/services';
 
-export const authConfig: NextAuthOptions = {
-	pages: {
-		signIn: '/login',
-	},
-	providers: [
-		CredentialsProvider({
-			async authorize(credentials) {
-				if (credentials) {
-					const res = await loginUserService({
-						email: credentials.email,
-						password: credentials.password,
-					});
+// export const authConfig: NextAuthOptions = {
+// 	pages: {
+// 		signIn: '/login',
+// 	},
+// 	providers: [
+// 		CredentialsProvider({
+// 			async authorize(credentials) {
+// 				if (credentials) {
+// 					const res = await loginUserService({
+// 						email: credentials.email,
+// 						password: credentials.password,
+// 					});
 
-					if (res) {
-						console.log(res);
-						return {
-							email: res.user.email,
-							name: res.user.first_name,
-							id: res.access_token,
-							role: res.access_token,
-						};
-					}
+// 					console.log(res);
 
-					return null;
-				}
+// 					if (res) {
+// 						console.log(res);
+// 						return {
+// 							email: res.user.email,
+// 							name: res.user.first_name,
+// 							id: res.access_token,
+// 							role: res.access_token,
+// 						};
+// 					}
 
-				return null;
-			},
-			credentials: {
-				email: { label: 'Email', type: 'text' },
-				password: { label: 'Password', type: 'password' },
-			},
-		}),
-	],
-	session: {
-		strategy: 'jwt',
+// 					return null;
+// 				}
 
-		maxAge: 60 * 60, // 1 hour
-	},
-	callbacks: {
-		async jwt({ token, user }) {
-			if (user) {
-				token.id = user.id;
-				token.name = user.name;
-				token.email = user.email;
-			}
+// 				return null;
+// 			},
+// 			credentials: {
+// 				email: { label: 'Email', type: 'text' },
+// 				password: { label: 'Password', type: 'password' },
+// 			},
+// 		}),
+// 	],
+// 	session: {
+// 		strategy: 'jwt',
 
-			return token;
-		},
-		async session({ session, token }: { session: any; token: any }) {
-			session.id = token.id;
-			session.name = token.name;
-			session.email = token.email;
+// 		maxAge: 60 * 60, // 1 hour
+// 	},
+// 	callbacks: {
+// 		async jwt({ token, user }) {
+// 			if (user) {
+// 				token.id = user.id;
+// 				token.name = user.name;
+// 				token.email = user.email;
+// 			}
 
-			return session;
-		},
-	},
-};
+// 			return token;
+// 		},
+// 		async session({ session, token }: { session: any; token: any }) {
+// 			session.id = token.id;
+// 			session.name = token.name;
+// 			session.email = token.email;
+
+// 			return session;
+// 		},
+// 	},
+// };

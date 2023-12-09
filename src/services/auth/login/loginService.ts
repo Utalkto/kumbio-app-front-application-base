@@ -3,7 +3,7 @@ import { ILoginPayload, ILoginResponse } from './interfaces';
 
 export const loginUserService = async (credentials: ILoginPayload) => {
 	try {
-		const authResponse = await fetch(baseUrl + '/api/users/login/', {
+		const authResponse = await fetch(encodeURI(baseUrl + '/api/users/login/'), {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

@@ -8,3 +8,4 @@ export * from './Dialog';
 export * from './Modal';
 export * from './TimeInput';
 export * from './Drawer';
+export * from './Card';

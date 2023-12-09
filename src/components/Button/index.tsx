@@ -12,6 +12,7 @@ export const Button: FC<Props> = ({ children, ...props }) => {
 			sx={{
 				...props.sx,
 				borderRadius: '1rem',
+				textTransform: 'none',
 			}}
 		>
 			{children}
