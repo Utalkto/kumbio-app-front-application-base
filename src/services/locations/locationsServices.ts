@@ -1,15 +1,14 @@
+import { auth } from '@/auth';
 import { ISession } from '@/interfaces';
 import { ILocation } from '@/models';
 import { baseUrl } from '@/services/config';
-import { getSession } from 'next-auth/react';
-import { IGetLocationsPayload } from './interfaces';
 
-export const getLocationsServices = async (payload: IGetLocationsPayload) => {
-	const session = (await getSession()) as unknown as ISession | null;
+export const getLocationsServices = async () => {
+	const session = (await auth()) as unknown as ISession;
 
 	try {
 		const response = await fetch(
-			`${baseUrl}/api/organizations/${payload.organizationId}/sedes/`,
+			`${baseUrl}/api/organizations/${session?.organizationPk}/sedes/`,
 			{
 				method: 'GET',
 				headers: {
@@ -20,13 +19,35 @@ export const getLocationsServices = async (payload: IGetLocationsPayload) => {
 		);
 
 		if (!response.ok) {
-			throw new Error('Error al obtener las ubicaciones');
+			return [];
 		}
 
-		const responseJson: ILocation = await response.json();
+		const responseJson: ILocation[] = await response.json();
 
 		return responseJson;
 	} catch (error) {
-		throw error;
+		console.error(error);
+		return [];
 	}
+};
+
+export const getLocationService = async (
+	locationId: string
+): Promise<ILocation> => {
+	const session = (await auth()) as unknown as ISession;
+
+	const response = await fetch(
+		`${baseUrl}/api/organizations/${session?.organizationPk}/sedes/${locationId}/`,
+		{
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Token ${session?.id}`,
+			},
+		}
+	);
+
+	const responseJson: ILocation = await response.json();
+
+	return responseJson;
 };

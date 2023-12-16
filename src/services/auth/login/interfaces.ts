@@ -8,4 +8,5 @@ export interface ILoginPayload {
 export interface ILoginResponse {
 	user: IUser;
 	access_token: string;
+	organization_pk: number;
 }

@@ -1,17 +1,16 @@
 import React from 'react';
-import { Hero, LocationsTable } from './_components';
-import { Container } from '@mui/material';
+import { getLocationsServices } from '@/services';
+import { Hero, LocationsTable } from '@/components/locations';
+import { Stack } from '@mui/material';
 
-const LocationsPage = () => {
+export default async function LocationsPag() {
+	const locations = await getLocationsServices();
+
 	return (
-		<Container
-			maxWidth="xl"
-			sx={{ py: 2, display: 'flex', flexDirection: 'column', gap: 2 }}
-		>
+		<Stack width={'100%'} gap={2}>
 			<Hero />
-			<LocationsTable />
-		</Container>
-	);
-};
 
-export default LocationsPage;
+			<LocationsTable locations={locations} />
+		</Stack>
+	);
+}

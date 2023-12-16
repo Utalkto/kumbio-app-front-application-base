@@ -1,3 +1,5 @@
+import { IDayWorks } from '..';
+
 export interface ILocation {
 	id: number;
 	created: Date;
@@ -10,4 +12,22 @@ export interface ILocation {
 	phone: string | null;
 	phone_aux: string | null;
 	organization: number;
+}
+
+export interface ICreateLocation {
+	step: number;
+	completedSteps: {
+		[k: number]: boolean;
+	};
+	location: ICreateLocationLocation;
+}
+
+interface ICreateLocationLocation {
+	name: string;
+	dayWorks: IDayWorks[];
+}
+
+interface ICreateLocationProfessional {
+	professional: number;
+	profession: number;
 }

@@ -1,12 +1,9 @@
-import { useRouter } from 'next/navigation';
-import {
-	CookieService,
-	IRegisterUserPayload,
-	registerUserService,
-} from '@/services';
+import { IRegisterUserPayload, registerUserService } from '@/services';
 import { useMutation } from '@tanstack/react-query';
 import { IRegisterFormValues } from './interfaces';
 import { FormikHelpers } from 'formik';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const registerFormInitialValues: IRegisterFormValues = {
 	first_name: '',
@@ -17,11 +14,10 @@ const registerFormInitialValues: IRegisterFormValues = {
 };
 
 export const useRegisterForm = () => {
-	const router = useRouter();
-
 	const { mutateAsync, isPending, isError } = useMutation({
 		mutationFn: (payload: IRegisterUserPayload) => registerUserService(payload),
 	});
+	const router = useRouter();
 
 	const onRegisterUser = async (
 		values: IRegisterFormValues,
@@ -30,8 +26,16 @@ export const useRegisterForm = () => {
 		try {
 			const response = await mutateAsync(values);
 			if (response.ok && response.data) {
-				CookieService.saveCookie('token', response.data.access_token);
-				router.push('/dashboard');
+				const response = await signIn('credentials', {
+					email: values.email,
+					password: values.password,
+				});
+
+				if (!response?.error) {
+					router.replace('/dashboard', { scroll: false });
+
+					return;
+				}
 			}
 
 			if (!response.ok && response.error) {

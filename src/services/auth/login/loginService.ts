@@ -12,13 +12,13 @@ export const loginUserService = async (credentials: ILoginPayload) => {
 		});
 
 		if (!authResponse.ok) {
-			throw new Error('Error al iniciar sesión');
+			return null;
 		}
 
 		const responseJson: ILoginResponse = await authResponse.json();
 
 		return responseJson;
 	} catch (error) {
-		throw error;
+		return null;
 	}
 };
