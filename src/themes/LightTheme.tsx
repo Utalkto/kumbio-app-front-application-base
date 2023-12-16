@@ -1,6 +1,7 @@
 import { BRAND_COLORS } from '@/constants/brandColors';
 import { createTheme } from '@mui/material/styles';
-import { esES } from '@mui/x-date-pickers';
+import { esES as pickerEsES } from '@mui/x-date-pickers';
+import { esES as dataGridEsES } from '@mui/x-data-grid/locales';
 
 export const lightTheme = createTheme(
 	{
@@ -16,5 +17,6 @@ export const lightTheme = createTheme(
 			fontFamily: 'inherit',
 		},
 	},
-	esES
+	dataGridEsES,
+	pickerEsES
 );

@@ -37,3 +37,13 @@ export const DAYS_NAME_ARRAY: DAYSNAME[] = [
 	DAYS_NAME.Saturday,
 	DAYS_NAME.Sunday,
 ];
+
+export const DAY_WORKS = {
+	MONDAY: 'Lunes',
+	TUESDAY: 'Martes',
+	WEDNESDAY: 'Miércoles',
+	THURSDAY: 'Jueves',
+	FRIDAY: 'Viernes',
+	SATURDAY: 'Sábado',
+	SUNDAY: 'Domingo',
+};

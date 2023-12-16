@@ -7,4 +7,5 @@ export interface ISession {
 	id: string;
 	name: string;
 	email: string;
+	organizationPk: number;
 }
