@@ -47,6 +47,15 @@ export const LocationForm = () => {
 							<MenuItem value={1}>Profesional 1</MenuItem>
 							<MenuItem value={2}>Profesional 2</MenuItem>
 							<MenuItem value={3}>Profesional 3</MenuItem>
+							<MenuItem
+								value={-1}
+								color="primary"
+								sx={{
+									color: 'primary.main',
+								}}
+							>
+								+ Agregar Profesional
+							</MenuItem>
 						</SelectInput>
 					</Grid>
 
@@ -64,6 +73,15 @@ export const LocationForm = () => {
 							<MenuItem value={1}>Servicio 1</MenuItem>
 							<MenuItem value={2}>Servicio 2</MenuItem>
 							<MenuItem value={3}>Servicio 3</MenuItem>
+							<MenuItem
+								value={-1}
+								color="primary"
+								sx={{
+									color: 'primary.main',
+								}}
+							>
+								+ Agregar Servicio
+							</MenuItem>
 						</SelectInput>
 					</Grid>
 				</Grid>

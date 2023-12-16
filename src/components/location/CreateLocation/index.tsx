@@ -5,13 +5,23 @@ import { Form, Formik } from 'formik';
 import { createLocationSchema } from '@/models';
 import { useCreateLocation } from '@/hooks';
 import { ColorlibStepIconLocation } from '@/components/location/ColorlibStepIconLocation';
-import { Stack, Step, StepLabel, Stepper } from '@mui/material';
+import {
+	IconButton,
+	Stack,
+	Step,
+	StepLabel,
+	Stepper,
+	Typography,
+} from '@mui/material';
 import { ColorlibConnector } from './styles';
 import { LocationForm } from '@/components/location/CreateLocationForm';
 import { Button } from '@/components/ui';
+import { ArrowBack } from '@mui/icons-material';
+import { useRouter } from 'next/navigation';
 
 export const CreateLocation: FC = () => {
 	const { createLocationInitialForm, steps, onSubmit } = useCreateLocation();
+	const router = useRouter();
 
 	return (
 		<Formik
@@ -25,7 +35,7 @@ export const CreateLocation: FC = () => {
 						width: '100%',
 					}}
 				>
-					<Stepper
+					{/* <Stepper
 						alternativeLabel
 						activeStep={values.step}
 						connector={<ColorlibConnector />}
@@ -50,11 +60,29 @@ export const CreateLocation: FC = () => {
 								</StepLabel>
 							</Step>
 						))}
-					</Stepper>
+					</Stepper> */}
+					<Stack
+						width="100%"
+						direction="row"
+						gap={1}
+						justifyContent={'space-between'}
+						mb={2}
+					>
+						<Stack direction="row" alignItems={'center'}>
+							<IconButton onClick={() => router.back()}>
+								<ArrowBack />
+							</IconButton>
+
+							<Typography variant="body1">Crear sede</Typography>
+						</Stack>
+						<Button variant="contained" type="submit">
+							Crear
+						</Button>
+					</Stack>
 
 					{values.step === 0 && <LocationForm />}
 
-					<Stack width="100%" direction="row" gap={1} justifyContent={'end'}>
+					{/* <Stack width="100%" direction="row" gap={1} justifyContent={'end'}>
 						{values.step > 0 && (
 							<Button
 								variant="outlined"
@@ -68,10 +96,8 @@ export const CreateLocation: FC = () => {
 							</Button>
 						)}
 
-						<Button variant="contained" type="submit">
-							Continuar
-						</Button>
-					</Stack>
+
+					</Stack> */}
 				</Form>
 			)}
 		</Formik>
