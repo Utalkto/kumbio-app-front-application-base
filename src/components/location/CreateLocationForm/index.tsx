@@ -12,6 +12,7 @@ import React, { Fragment } from 'react';
 import { DAY_WORKS } from '@/constants/daysName';
 import dayjs from 'dayjs';
 import { ICreateLocation } from '@/models';
+import { CreateLocationProfessional } from '../CreateLocationProfessional';
 
 export const LocationForm = () => {
 	const { values, handleChange, handleBlur, touched, errors } =
@@ -19,7 +20,7 @@ export const LocationForm = () => {
 
 	return (
 		<Grid container spacing={2}>
-			<Grid item xs={12} sm={6}>
+			<Grid item xs={12} md={6}>
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
 						<TextInput
@@ -34,33 +35,11 @@ export const LocationForm = () => {
 						/>
 					</Grid>
 					<Grid item xs={12}>
-						<SelectInput
-							name="location.department"
-							label="Profesionales"
-							// value={values.location.department}
-							onBlur={handleBlur}
-							onChange={handleChange}
-							// error={touched?.location?.department && Boolean(errors?.location?.department)}
-							// helperText={touched?.location?.department && errors?.location?.department}
-							fullWidth
-						>
-							<MenuItem value={1}>Profesional 1</MenuItem>
-							<MenuItem value={2}>Profesional 2</MenuItem>
-							<MenuItem value={3}>Profesional 3</MenuItem>
-							<MenuItem
-								value={-1}
-								color="primary"
-								sx={{
-									color: 'primary.main',
-								}}
-							>
-								+ Agregar Profesional
-							</MenuItem>
-						</SelectInput>
+						<CreateLocationProfessional />
 					</Grid>
 
 					<Grid item xs={12}>
-						<SelectInput
+						{/* <SelectInput
 							name="location.department"
 							label="Servicios"
 							// value={values.location.department}
@@ -82,12 +61,12 @@ export const LocationForm = () => {
 							>
 								+ Agregar Servicio
 							</MenuItem>
-						</SelectInput>
+						</SelectInput> */}
 					</Grid>
 				</Grid>
 			</Grid>
 
-			<Grid item xs={12} sm={6}>
+			<Grid item xs={12} md={6}>
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
 						<Typography variant="subtitle2" color="text.primary">

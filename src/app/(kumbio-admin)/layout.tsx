@@ -1,4 +1,4 @@
-// import { OnBoardingModal } from '@/components/OnBoardingModal';
+import { OnBoardingModal } from '@/components/ui/OnBoardingModal';
 import { MainLayout } from '@/layouts';
 
 export default function AdminLayout({

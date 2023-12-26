@@ -80,7 +80,7 @@ export const CreateLocation: FC = () => {
 						</Button>
 					</Stack>
 
-					{values.step === 0 && <LocationForm />}
+					<LocationForm />
 
 					{/* <Stack width="100%" direction="row" gap={1} justifyContent={'end'}>
 						{values.step > 0 && (

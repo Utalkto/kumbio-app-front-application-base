@@ -1,4 +1,4 @@
-import { IOnboardingForm } from '@/components/OnBoardingModal/interfaces';
+import { IOnboardingForm } from '@/components/ui/OnBoardingModal/interfaces';
 import { DAYS_NAME_ARRAY } from '@/constants/daysName';
 import * as Yup from 'yup';
 
