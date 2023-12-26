@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { IStatus } from './interfaces';
 
-export const useStatus = () => {
-	const [status, setStatus] = useState<IStatus>('idle');
+export const useStatus = (initialState?: IStatus) => {
+	const [status, setStatus] = useState<IStatus>(initialState ?? 'idle');
 
 	const onChangeStatus = (newStatus: IStatus) => {
 		setStatus(newStatus);

@@ -1,12 +1,12 @@
-import { Container } from '@mui/material';
+import { HeroService } from '@/components';
+import { Stack } from '@mui/material';
 import React from 'react';
 
 const ServicesPage = () => {
 	return (
-		<Container
-			maxWidth="lg"
-			sx={{ py: 2, display: 'flex', flexDirection: 'column', gap: 2 }}
-		></Container>
+		<Stack width={'100%'} gap={2}>
+			<HeroService />
+		</Stack>
 	);
 };
 

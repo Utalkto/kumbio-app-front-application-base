@@ -3,10 +3,9 @@
 import { ICreateLocation } from '@/models';
 import dayjs from 'dayjs';
 import { FormikHelpers } from 'formik';
+import { professionalsMock } from '../../mocks/professionals/index';
 
 const createLocationInitialForm: ICreateLocation = {
-	step: 0,
-	completedSteps: {},
 	location: {
 		name: '',
 		dayWorks: [
@@ -68,6 +67,21 @@ const createLocationInitialForm: ICreateLocation = {
 			},
 		],
 	},
+	professionals: [],
+	isAddingNewProfessional: false,
+	professionalToAdd: {
+		user_data: {
+			first_name: '',
+			last_name: '',
+			email: '',
+			phone_number: '',
+			user_pk: Math.floor(Math.random() * 1000),
+		},
+		sede_pk: -1,
+		service_pk: -1,
+		description: '',
+		how_you_know_us: '',
+	},
 };
 
 const steps = [
@@ -80,21 +94,13 @@ export const useCreateLocation = () => {
 	const onSubmit = (
 		values: ICreateLocation,
 		formikHelpers: FormikHelpers<ICreateLocation>
-	) => {
-		if (values.step === 0) {
-			formikHelpers.setFieldValue('step', 1);
-			formikHelpers.setFieldValue('completedSteps.0', true);
+	) => {};
 
-			return;
-		}
+	return {
+		createLocationInitialForm,
+		steps,
 
-		if (values.step === 1) {
-			formikHelpers.setFieldValue('step', 2);
-			formikHelpers.setFieldValue('completedSteps.1', true);
-
-			return;
-		}
+		onSubmit,
+		professionalsMock,
 	};
-
-	return { createLocationInitialForm, steps, onSubmit };
 };

@@ -1,0 +1,108 @@
+import { ICreateLocationProfessional } from '@/models';
+
+export const professionalsMock: ICreateLocationProfessional[] = [
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 0,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perezs',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 1,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 2,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 3,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 4,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 5,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 6,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+	{
+		user_data: {
+			first_name: 'Juan',
+			last_name: 'Perez',
+			email: '',
+			phone_number: '1234567890',
+			user_pk: 7,
+		},
+		sede_pk: 0,
+		service_pk: 0,
+		description: '',
+		how_you_know_us: '',
+	},
+];
