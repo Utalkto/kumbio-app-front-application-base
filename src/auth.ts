@@ -14,6 +14,7 @@ const ProtectedRoutes = [
 ];
 
 export const { handlers, auth } = NextAuth({
+	trustHost: true,
 	pages: {
 		signIn: '/login',
 	},
