@@ -10,3 +10,4 @@ export * from './TimeInput';
 export * from './Drawer';
 export * from './Card';
 export * from './LoadingPage';
+export * from './Swiper';

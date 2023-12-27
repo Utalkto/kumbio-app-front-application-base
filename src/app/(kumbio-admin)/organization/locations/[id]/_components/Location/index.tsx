@@ -35,6 +35,13 @@ export const Location: FC<Props> = ({ location }) => {
 			<Formik initialValues={location} onSubmit={() => {}}>
 				{({ values }) => (
 					<Form>
+						{/* <Swiper
+							tabPanels={[
+								<LocationDetails location={values} key={values.id} />,
+							]}
+							activeIndex={value}
+							onChangeIndex={handleChangeIndex}
+						/> */}
 						<SwipeableViews
 							axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
 							index={value}
