@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getLocationService } from '@/services';
 import { useLocationTabs } from './hooks';
 import { Form, Formik } from 'formik';
+import { Swiper } from '@/components';
 
 export const Location: FC<Props> = ({ location }) => {
 	const { data: locationData } = useQuery({
@@ -35,14 +36,14 @@ export const Location: FC<Props> = ({ location }) => {
 			<Formik initialValues={location} onSubmit={() => {}}>
 				{({ values }) => (
 					<Form>
-						{/* <Swiper
+						<Swiper
 							tabPanels={[
 								<LocationDetails location={values} key={values.id} />,
 							]}
 							activeIndex={value}
 							onChangeIndex={handleChangeIndex}
-						/> */}
-						<SwipeableViews
+						/>
+						{/* <SwipeableViews
 							axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
 							index={value}
 							onChangeIndex={handleChangeIndex}
@@ -59,7 +60,7 @@ export const Location: FC<Props> = ({ location }) => {
 							<TabPanel value={value} index={3} dir={theme.direction}>
 								<Typography variant="body1">Profesionales</Typography>
 							</TabPanel>
-						</SwipeableViews>
+						</SwipeableViews> */}
 					</Form>
 				)}
 			</Formik>
