@@ -86,11 +86,5 @@ export const authConfig: NextAuthConfig = {
 			}
 			return true;
 		},
-
-		async redirect({ url, baseUrl }) {
-			console.log('redirect', url, baseUrl);
-
-			return url.startsWith(baseUrl) ? url : baseUrl;
-		},
 	},
 };
