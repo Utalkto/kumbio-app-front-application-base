@@ -2,6 +2,7 @@ import { NextAuthConfig } from 'next-auth';
 import GitHub from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { loginUserService } from './services';
+import async from './app/(kumbio-admin)/organization/locations/page';
 
 const ProtectedRoutes = [
 	'/dashboard',
