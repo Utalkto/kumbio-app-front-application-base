@@ -1,8 +1,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-
+import { DataGrid, GridCellParams } from '@mui/x-data-grid';
 import { Stack } from '@mui/material';
 import { Props } from './interfaces';
 import { useLocationsListTable } from '@/hooks';
@@ -28,7 +27,9 @@ export const LocationsTable: FC<Props> = ({ locations }) => {
 					}}
 					pageSizeOptions={[5, 10, 20]}
 					disableRowSelectionOnClick
-					onCellClick={(params) => onClickLocation(params.row.id.toString())}
+					onCellClick={(params: GridCellParams<IRowLocation>) => {
+						onClickLocation(params.row.id.toString());
+					}}
 					sx={{
 						'& .MuiDataGrid-cell': {
 							cursor: 'pointer',
