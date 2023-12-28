@@ -14,6 +14,7 @@ const ProtectedRoutes = [
 ];
 
 export const { handlers, auth } = NextAuth({
+	trustHost: true,
 	pages: {
 		signIn: '/login',
 	},
@@ -36,16 +37,7 @@ export const { handlers, auth } = NextAuth({
 							organizationPk: res.organization_pk,
 						};
 
-					// if (!res) return null;
-
-					if (!res) {
-						return {
-							id: '123',
-							name: 'test',
-							email: 'test@test.com',
-							accessToken: '123',
-						};
-					}
+					if (!res) return null;
 				}
 
 				return null;

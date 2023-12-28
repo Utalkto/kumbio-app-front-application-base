@@ -36,16 +36,13 @@ export const getLocationService = async (
 ): Promise<ILocation> => {
 	const session = (await auth()) as unknown as ISession;
 
-	const response = await fetch(
-		`${baseUrl}/api/organizations/${session?.organizationPk}/sedes/${locationId}/`,
-		{
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Token ${session?.id}`,
-			},
-		}
-	);
+	const response = await fetch(`${baseUrl}/api/sedes/${locationId}/`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Token ${session?.id}`,
+		},
+	});
 
 	const responseJson: ILocation = await response.json();
 

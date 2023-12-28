@@ -2,7 +2,7 @@ import { ILoginPayload } from '@/services';
 import { ILoginFormValues } from './interfaces';
 import { useStatus } from '@/hooks';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const loginFormInitialValues: ILoginFormValues = {
 	email: '',
@@ -10,7 +10,13 @@ const loginFormInitialValues: ILoginFormValues = {
 	rememberMe: false,
 };
 export const useLoginForm = () => {
-	const { status, onChangeStatus } = useStatus();
+	// Get error param
+	const searchParams = useSearchParams();
+	const error = searchParams.get('error');
+
+	const { status, onChangeStatus } = useStatus(
+		error === 'CredentialsSignin' ? 'error' : 'idle'
+	);
 	const router = useRouter();
 
 	const onLoginUser = async (values: ILoginPayload) => {
@@ -29,6 +35,8 @@ export const useLoginForm = () => {
 
 				return;
 			}
+
+			onChangeStatus('error');
 		} catch (error) {
 			onChangeStatus('error');
 		} finally {

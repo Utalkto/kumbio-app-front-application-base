@@ -2,6 +2,7 @@ import { NextAuthConfig } from 'next-auth';
 import GitHub from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { loginUserService } from './services';
+import async from './app/(kumbio-admin)/organization/locations/page';
 
 const ProtectedRoutes = [
 	'/dashboard',
@@ -35,16 +36,7 @@ export const authConfig: NextAuthConfig = {
 							organizationPk: res.organization_pk,
 						};
 
-					// if (!res) return null;
-
-					if (!res) {
-						return {
-							id: '123',
-							name: 'test',
-							email: 'test@test.com',
-							accessToken: '123',
-						};
-					}
+					if (!res) return null;
 				}
 
 				return null;

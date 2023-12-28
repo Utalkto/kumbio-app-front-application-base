@@ -20,7 +20,7 @@ export const MainLayout: FC<Props> = ({ children }) => {
       </StyledDesktopContainer>
 
       <StyledMobileContainer>
-        <Stack width={"100%"} padding="8px">
+        <Stack width={"100%"} padding="8px" marginBottom={"56px"}>
           {children}
         </Stack>
         <BottomMenu />

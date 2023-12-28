@@ -1,15 +1,16 @@
 'use client';
 
-import React, { FC, } from 'react';
+import React, { FC } from 'react';
 import { LocationDetails, LocationTabs } from './components';
 import SwipeableViews from 'react-swipeable-views';
-import { IconButton, Stack, Typography, } from '@mui/material';
+import { IconButton, Stack, Typography } from '@mui/material';
 import { Props } from './interfaces';
 import { ArrowBack } from '@mui/icons-material';
 import { useQuery } from '@tanstack/react-query';
 import { getLocationService } from '@/services';
-import { useLocationForm, useLocationTabs } from './hooks';
+import { useLocationTabs } from './hooks';
 import { Form, Formik } from 'formik';
+import { Swiper } from '@/components';
 
 export const Location: FC<Props> = ({ location }) => {
 	const { data: locationData } = useQuery({
@@ -35,7 +36,14 @@ export const Location: FC<Props> = ({ location }) => {
 			<Formik initialValues={location} onSubmit={() => {}}>
 				{({ values }) => (
 					<Form>
-						<SwipeableViews
+						<Swiper
+							tabPanels={[
+								<LocationDetails location={values} key={values.id} />,
+							]}
+							activeIndex={value}
+							onChangeIndex={handleChangeIndex}
+						/>
+						{/* <SwipeableViews
 							axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
 							index={value}
 							onChangeIndex={handleChangeIndex}
@@ -52,7 +60,7 @@ export const Location: FC<Props> = ({ location }) => {
 							<TabPanel value={value} index={3} dir={theme.direction}>
 								<Typography variant="body1">Profesionales</Typography>
 							</TabPanel>
-						</SwipeableViews>
+						</SwipeableViews> */}
 					</Form>
 				)}
 			</Formik>

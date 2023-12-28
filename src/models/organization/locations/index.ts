@@ -15,11 +15,11 @@ export interface ILocation {
 }
 
 export interface ICreateLocation {
-	step: number;
-	completedSteps: {
-		[k: number]: boolean;
-	};
 	location: ICreateLocationLocation;
+
+	professionals: ICreateLocationProfessional[];
+	isAddingNewProfessional: boolean;
+	professionalToAdd: ICreateLocationProfessional;
 }
 
 interface ICreateLocationLocation {
@@ -27,7 +27,16 @@ interface ICreateLocationLocation {
 	dayWorks: IDayWorks[];
 }
 
-interface ICreateLocationProfessional {
-	professional: number;
-	profession: number;
+export interface ICreateLocationProfessional {
+	user_data: {
+		first_name: string;
+		last_name: string;
+		email: string;
+		phone_number: string;
+		user_pk: number;
+	};
+	sede_pk: number;
+	service_pk: number;
+	description: string;
+	how_you_know_us: string;
 }

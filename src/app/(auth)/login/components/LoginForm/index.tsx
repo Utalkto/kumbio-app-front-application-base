@@ -106,7 +106,7 @@ export const LoginForm = () => {
 							</Stack>
 							{status === 'pending' && <CircularBar size={20} />}
 
-							{status === 'idle' && (
+							{status !== 'pending' && (
 								<Button type="submit" variant="contained" fullWidth>
 									Ingresar
 								</Button>
