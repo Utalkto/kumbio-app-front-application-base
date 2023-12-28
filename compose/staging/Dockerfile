@@ -9,6 +9,7 @@ COPY . /react-docker-example/
 # Install app dependencies
 RUN npm install -g npm
 RUN npm install --force
+RUN npm i sharp --force
 RUN npm run build
 
 
