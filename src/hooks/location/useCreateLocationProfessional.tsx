@@ -65,7 +65,6 @@ export const useCreateLocationProfessional = () => {
 
 		arrayHelpers.push(professionalToAdd);
 
-		console.log({ professionalToAdd });
 		setProfessionals([...professionals, professionalToAdd]);
 		formValues.setFieldValue('professionalToAdd', {
 			user_data: {

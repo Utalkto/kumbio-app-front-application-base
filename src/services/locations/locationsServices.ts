@@ -6,8 +6,6 @@ import { baseUrl } from '@/services/config';
 export const getLocationsServices = async () => {
 	const session = (await auth()) as unknown as ISession;
 
-	console.log({ session });
-
 	try {
 		const response = await fetch(
 			`${baseUrl}/api/organizations/${session?.organizationPk}/sedes/`,
