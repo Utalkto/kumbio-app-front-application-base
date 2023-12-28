@@ -79,7 +79,10 @@ export const { handlers, auth } = NextAuth({
 			const isProtectedRoute = ProtectedRoutes.some((url) =>
 				request.nextUrl.pathname.includes(url)
 			);
-			if (isProtectedRoute || request.nextUrl.pathname === '/') {
+			if (request.nextUrl.pathname === '/') {
+				return Response.redirect(new URL('/dashboard', request.nextUrl));
+			}
+			if (isProtectedRoute) {
 				if (isLoggedIn) return true;
 				return false; // Redirect unauthenticated users to login page
 			} else if (isLoggedIn) {
