@@ -20,7 +20,6 @@ export const CreateLocationProfessional = () => {
 		onAddNewProfessional,
 	} = useCreateLocationProfessional();
 
-	console.log({ values, errors, professionals });
 	return (
 		<Grid container spacing={2}>
 			<FieldArray
@@ -44,7 +43,6 @@ export const CreateLocationProfessional = () => {
 									setOpen(!open);
 								}}
 								onChange={(e, child) => {
-									console.log({ e, child });
 									onSelectProfessional(e, arrayHelpers);
 									setOpen(false);
 									// Close the menu

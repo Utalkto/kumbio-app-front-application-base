@@ -27,7 +27,7 @@ export const LocationDetails: FC<Props> = ({ location }) => {
 				<TextInput
 					name="description"
 					label="Descripción"
-					value={location.description}
+					value={location.description ?? ''}
 					onBlur={handleBlur}
 					onChange={handleChange}
 					error={touched.description && Boolean(errors.description)}
@@ -51,7 +51,7 @@ export const LocationDetails: FC<Props> = ({ location }) => {
 				<TextInput
 					name="maps_url"
 					label="Link de ubicación"
-					value={location.maps_url}
+					value={location.maps_url ?? ''}
 					onBlur={handleBlur}
 					onChange={handleChange}
 					error={touched.maps_url && Boolean(errors.maps_url)}
@@ -63,7 +63,7 @@ export const LocationDetails: FC<Props> = ({ location }) => {
 				<TextInput
 					name="phone"
 					label="Número de teléfono"
-					value={location.phone}
+					value={location.phone ?? ''}
 					onBlur={handleBlur}
 					onChange={handleChange}
 					error={touched.phone && Boolean(errors.phone)}
@@ -75,7 +75,7 @@ export const LocationDetails: FC<Props> = ({ location }) => {
 				<TextInput
 					name="phone_aux"
 					label="Número fuera de oficina"
-					value={location.phone_aux}
+					value={location.phone_aux ?? ''}
 					onBlur={handleBlur}
 					onChange={handleChange}
 					error={touched.phone_aux && Boolean(errors.phone_aux)}
