@@ -5,3 +5,4 @@ export * from './sectors';
 export * from './location';
 export * from './locations';
 export * from './useBottomMenu';
+export * from './services';

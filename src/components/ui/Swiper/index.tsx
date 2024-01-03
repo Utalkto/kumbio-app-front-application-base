@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { Props, TabPanelProps } from './interfaces';
