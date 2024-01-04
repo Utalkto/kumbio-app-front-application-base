@@ -2,7 +2,6 @@
 
 import React, { FC } from 'react';
 import { LocationDetails, LocationTabs } from './components';
-import SwipeableViews from 'react-swipeable-views';
 import { IconButton, Stack, Typography } from '@mui/material';
 import { Props } from './interfaces';
 import { ArrowBack } from '@mui/icons-material';
@@ -43,24 +42,6 @@ export const Location: FC<Props> = ({ location }) => {
 							activeIndex={value}
 							onChangeIndex={handleChangeIndex}
 						/>
-						{/* <SwipeableViews
-							axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-							index={value}
-							onChangeIndex={handleChangeIndex}
-						>
-							<TabPanel value={value} index={0} dir={theme.direction}>
-								<LocationDetails location={values} />
-							</TabPanel>
-							<TabPanel value={value} index={1} dir={theme.direction}>
-								<Typography variant="body1">Horario de trabajo</Typography>
-							</TabPanel>
-							<TabPanel value={value} index={2} dir={theme.direction}>
-								<Typography variant="body1">Servicios</Typography>
-							</TabPanel>
-							<TabPanel value={value} index={3} dir={theme.direction}>
-								<Typography variant="body1">Profesionales</Typography>
-							</TabPanel>
-						</SwipeableViews> */}
 					</Form>
 				)}
 			</Formik>

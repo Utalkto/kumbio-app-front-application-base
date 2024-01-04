@@ -7,16 +7,13 @@ export const getOrganizationServices = async (organizationPk: number) => {
 	const session = (await auth()) as unknown as ISession;
 
 	try {
-		const response = await fetch(
-			`${baseUrl}/api/organizations/${session?.organizationPk}/sedes/`,
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Token ${session?.id}`,
-				},
-			}
-		);
+		const response = await fetch(`${baseUrl}/api/services/`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Token ${session?.id}`,
+			},
+		});
 
 		if (!response.ok) {
 			return [];
