@@ -44,6 +44,7 @@ interface IProfessionalSchedule {
 	day: IDayWorks;
 	hour_init: string;
 	hour_end: string;
+	is_working: boolean;
 }
 
 type IDayWorks =

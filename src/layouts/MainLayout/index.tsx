@@ -1,30 +1,30 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Props } from './interfaces';
-import { FC } from 'react';
-import { BottomMenu, Navbar, Sidebar } from './components';
-import { Stack } from '@mui/material';
-import { StyledDesktopContainer, StyledMobileContainer } from './styles';
+import React from "react";
+import { Props } from "./interfaces";
+import { FC } from "react";
+import { BottomMenu, Navbar, Sidebar } from "./components";
+import { Stack } from "@mui/material";
+import { StyledDesktopContainer, StyledMobileContainer } from "./styles";
 
 export const MainLayout: FC<Props> = ({ children }) => {
-	return (
-		<>
-			<Navbar />
+  return (
+    <>
+      <Navbar />
 
-			<StyledDesktopContainer direction={'row'}>
-				<Sidebar />
-				<Stack width={'100%'} padding="8px">
-					{children}
-				</Stack>
-			</StyledDesktopContainer>
+      <StyledDesktopContainer direction={"row"}>
+        <Sidebar />
+        <Stack width={"100%"} padding="8px">
+          {children}
+        </Stack>
+      </StyledDesktopContainer>
 
-			<StyledMobileContainer>
-				<Stack width={'100%'} padding="8px" marginBottom={'56px'}>
-					{children}
-				</Stack>
-				<BottomMenu />
-			</StyledMobileContainer>
-		</>
-	);
+      <StyledMobileContainer>
+        <Stack width={"100%"} padding="8px" marginBottom={"56px"}>
+          {children}
+        </Stack>
+        <BottomMenu />
+      </StyledMobileContainer>
+    </>
+  );
 };
