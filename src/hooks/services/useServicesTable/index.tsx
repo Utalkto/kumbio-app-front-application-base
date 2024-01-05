@@ -2,24 +2,21 @@
 
 import { IRowService } from '@/interfaces';
 import { IService } from '@/models';
-import { Theme, useMediaQuery } from '@mui/material';
+import { getOrganizationServices } from '@/services/services';
 import { GridColDef } from '@mui/x-data-grid';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
 export const useServicesTable = (services: IService[]) => {
-	const isMobile = useMediaQuery((theme: Theme) =>
-		theme.breakpoints.down('sm')
-	);
-
-	// const { data: locationsData } = useQuery({
-	// 	queryKey: ['locations'],
-	// 	queryFn: getLocationsServices,
-	// 	initialData: locations,
-	// });
+	const { data: servicesData } = useQuery({
+		queryKey: ['services'],
+		queryFn: getOrganizationServices,
+		initialData: services,
+	});
 
 	const router = useRouter();
 
-	const rows: IRowService[] = services?.map((service) => {
+	const rows: IRowService[] = servicesData?.map((service) => {
 		return {
 			id: service.id,
 			name: service.name,
@@ -50,8 +47,8 @@ export const useServicesTable = (services: IService[]) => {
 	];
 
 	const onClickService = (id: string) => {
-		router.push(`/organization/locations/${id}`);
+		router.push(`/organization/services/${id}`);
 	};
 
-	return { rows, servicesColumns, onClickService };
+	return { servicesData, rows, servicesColumns, onClickService };
 };

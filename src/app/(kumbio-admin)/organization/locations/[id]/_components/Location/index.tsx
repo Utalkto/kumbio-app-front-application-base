@@ -13,7 +13,7 @@ import { Swiper } from '@/components';
 
 export const Location: FC<Props> = ({ location }) => {
 	const { data: locationData } = useQuery({
-		queryKey: ['location', location?.id],
+		queryKey: ['locations', location?.id],
 		queryFn: () => getLocationService(String(location?.id)),
 		initialData: location,
 	});

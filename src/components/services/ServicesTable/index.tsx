@@ -4,10 +4,11 @@ import { useServicesTable } from '@/hooks';
 import { IRowService } from '@/interfaces';
 import { Stack } from '@mui/material';
 import { DataGrid, GridCellParams } from '@mui/x-data-grid';
-import React from 'react';
+import React, { FC } from 'react';
+import { Props } from './interfaces';
 
-export const ServicesTable = () => {
-	const { rows, servicesColumns, onClickService } = useServicesTable([]);
+export const ServicesTable: FC<Props> = ({ services }) => {
+	const { rows, servicesColumns, onClickService } = useServicesTable(services);
 
 	return (
 		<>
