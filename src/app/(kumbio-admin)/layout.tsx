@@ -8,7 +8,7 @@ export default function AdminLayout({
 }) {
 	return (
 		<>
-			{/* <OnBoardingModal /> */}
+			<OnBoardingModal />
 			<MainLayout>{children}</MainLayout>
 		</>
 	);

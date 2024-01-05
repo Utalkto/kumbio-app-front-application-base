@@ -15,15 +15,15 @@ export const WorkDaysForm = () => {
 					<Fragment key={DAY_WORKS[workDay.day]}>
 						<Grid
 							item
-							xs={workDay.active ? 4 : 12}
-							sm={workDay.active ? 4 : 12}
+							xs={workDay.is_working ? 4 : 12}
+							sm={workDay.is_working ? 4 : 12}
 						>
 							<CheckboxInput
-								name={`dayWorks[${index}].active`}
-								id={`dayWorks[${index}].active`}
+								name={`dayWorks[${index}].is_working`}
+								id={`dayWorks[${index}].is_working`}
 								onChange={handleChange}
 								onBlur={handleBlur}
-								checked={workDay.active}
+								checked={workDay.is_working}
 								control={<Checkbox size="small" />}
 								label={DAY_WORKS[workDay.day]}
 								sx={{
@@ -32,7 +32,7 @@ export const WorkDaysForm = () => {
 							/>
 						</Grid>
 
-						{workDay.active && (
+						{workDay.is_working && (
 							<>
 								<Grid item xs={4} sm={4} md={4}>
 									<TimeInput

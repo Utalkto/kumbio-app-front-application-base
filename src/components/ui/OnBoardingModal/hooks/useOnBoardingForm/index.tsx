@@ -24,7 +24,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: true,
+			is_working: true,
 		},
 		{
 			day: 'TUESDAY',
@@ -32,7 +32,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: true,
+			is_working: true,
 		},
 		{
 			day: 'WEDNESDAY',
@@ -40,7 +40,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: true,
+			is_working: true,
 		},
 		{
 			day: 'THURSDAY',
@@ -48,7 +48,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: true,
+			is_working: true,
 		},
 		{
 			day: 'FRIDAY',
@@ -56,7 +56,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: true,
+			is_working: true,
 		},
 		{
 			day: 'SATURDAY',
@@ -64,7 +64,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: false,
+			is_working: false,
 		},
 		{
 			day: 'SUNDAY',
@@ -72,7 +72,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 			startHour: dayjs().hour(8).minute(0).second(0).millisecond(0).toDate(),
 			// End hour at 17:00
 			endHour: dayjs().hour(17).minute(0).second(0).millisecond(0).toDate(),
-			active: false,
+			is_working: false,
 		},
 	],
 	service: {
@@ -118,6 +118,7 @@ export const useOnBoardingForm = () => {
 					day: day.day,
 					hour_init: dayjs(day.startHour).format('HH:mm'),
 					hour_end: dayjs(day.endHour).format('HH:mm'),
+					is_working: day.is_working,
 				})),
 			});
 

@@ -19,7 +19,7 @@ export interface IOnboardingFormDayWorks {
 	day: IDayWorks;
 	startHour: Date;
 	endHour: Date;
-	active: boolean;
+	is_working: boolean;
 }
 
 export type IDayWorks =
