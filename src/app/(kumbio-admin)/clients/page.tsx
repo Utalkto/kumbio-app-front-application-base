@@ -25,6 +25,10 @@ import { Card } from "@/components/ui/Card";
 import { Swiper } from "@/components/ui/Swiper";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Modal } from "@/components";
+
+import { CreateClient } from "@/components/client/CreateClient";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -127,6 +131,12 @@ const rowsdocuments = [
 
 const ClientsPage = () => {
   const [numTab, setnumTab] = useState(0);
+  const router = useRouter();
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   let value = 0;
   return (
@@ -143,11 +153,19 @@ const ClientsPage = () => {
           </Typography>
 
           <Box display="flex" justifyContent="center" paddingBottom={2}>
-            <Button variant="contained" endIcon={<AddIcon />} color="primary">
+            <Button
+              variant="contained"
+              endIcon={<AddIcon />}
+              color="primary"
+              // onClick={() => router.push("/clients/create")}
+              onClick={handleOpen}
+            >
               Nuevo
             </Button>
           </Box>
         </Box>
+
+        <CreateClient open={open} handleClose={handleClose} />
 
         <Grid container spacing={5}>
           {/* Sidebar 2  */}
