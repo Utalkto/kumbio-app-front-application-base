@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useOnBoardingForm } from '..';
 
 const steps = [
@@ -13,13 +14,20 @@ const steps = [
 ];
 
 export const useOnBoarding = () => {
-	const { onBoardingFormInitialValues, onBoardingFormYupSchema, onSubmit } =
-		useOnBoardingForm();
+	const {
+		onBoardingFormInitialValues,
+		onBoardingFormYupSchema,
+		onSubmit,
+		open,
+		setOpen,
+	} = useOnBoardingForm();
 
 	return {
 		steps,
 		onBoardingFormInitialValues,
 		onSubmit,
 		onBoardingFormYupSchema,
+		open,
+		setOpen,
 	};
 };

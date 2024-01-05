@@ -7,6 +7,7 @@ import {
 	onBoardingProfessionalService,
 	onBoardingServiceService,
 } from '@/services';
+import { useState } from 'react';
 
 const onBoardingFormInitialValues: IOnboardingForm = {
 	step: 0,
@@ -83,6 +84,7 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 };
 
 export const useOnBoardingForm = () => {
+	const [open, setOpen] = useState(true);
 	const onSubmit = async (
 		values: IOnboardingForm,
 		formikHelpers: FormikHelpers<IOnboardingForm>
@@ -130,8 +132,16 @@ export const useOnBoardingForm = () => {
 				sede_pk: organizationResponse.organization_sedes[0].id,
 				professionalId: professionalResponse.professional_pk,
 			});
+
+			setOpen(false);
 		}
 	};
 
-	return { onBoardingFormInitialValues, onBoardingFormYupSchema, onSubmit };
+	return {
+		onBoardingFormInitialValues,
+		onBoardingFormYupSchema,
+		onSubmit,
+		open,
+		setOpen,
+	};
 };

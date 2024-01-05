@@ -31,16 +31,18 @@ export const OnBoardingModal = () => {
 		onBoardingFormInitialValues,
 		onSubmit,
 		onBoardingFormYupSchema,
+		open,
+		setOpen,
 	} = useOnBoarding();
 
 	return (
-		<Dialog open={true} onClose={() => {}}>
+		<Dialog open={open} onClose={() => setOpen(false)}>
 			<DialogTitle sx={{ m: 0, p: 1 }} color="primary">
 				Bienvenido a Kumbio
 			</DialogTitle>
 			<IconButton
 				aria-label="close"
-				onClick={() => {}}
+				onClick={() => setOpen(false)}
 				size="small"
 				sx={{
 					position: 'absolute',
