@@ -1,9 +1,6 @@
-import { getOrganizationService } from '@/services/services';
 import React from 'react';
 
-const ServicePage = async ({ params }: { params: { id: string } }) => {
-	const service = await getOrganizationService(Number(params.id));
-
+const ServicePage = () => {
 	return <div>ServicePage</div>;
 };
 
