@@ -1,29 +1,36 @@
-import { ISession } from "@/interfaces";
-import { IClient, ICreateClientPayload } from "@/models";
-import { baseUrl } from "@/services/config";
-import { auth } from "@/auth";
+import { ISession } from '@/interfaces';
+import { IClient, ICreateClientPayload } from '@/models';
+import { baseUrl } from '@/services/config';
+import { getSession } from 'next-auth/react';
 
-export const createClientService = async (payload: ICreateClientPayload) => {
-  const session = (await auth()) as unknown as ISession;
-  try {
-    const response = await fetch(`${baseUrl}/api/clients/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${session?.id}`,
-      },
-      body: JSON.stringify(payload),
-    });
+export const createClientService = async (
+	payload: ICreateClientPayload
+): Promise<IClient | null> => {
+	const session = (await getSession()) as unknown as ISession;
 
-    if (!response.ok) {
-      return [];
-    }
+	if (!session) {
+		return null;
+	}
 
-    const responseJson: IClient[] = await response.json();
+	try {
+		const response = await fetch(`${baseUrl}/api/clients/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Token ${session?.id}`,
+			},
+			body: JSON.stringify(payload),
+		});
 
-    return responseJson;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+		if (!response.ok) {
+			return null;
+		}
+
+		const responseJson: IClient = await response.json();
+
+		return responseJson;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
 };
