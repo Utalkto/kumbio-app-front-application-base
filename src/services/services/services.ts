@@ -1,7 +1,7 @@
 import { ISession } from '@/interfaces';
 import { baseUrl } from '../config';
-import { auth } from '@/auth';
 import { IService } from '@/models';
+import { auth } from '@/auth';
 
 export const getOrganizationServices = async () => {
 	const session = (await auth()) as unknown as ISession;

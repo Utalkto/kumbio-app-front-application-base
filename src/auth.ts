@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth';
-import { NextAuthConfig } from 'next-auth';
+import NextAuth, { NextAuthConfig } from 'next-auth';
 import GitHub from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { loginUserService } from './services';
+import { NextRequest } from 'next/server';
 
 const ProtectedRoutes = [
 	'/dashboard',
@@ -13,8 +13,7 @@ const ProtectedRoutes = [
 	'/settings',
 ];
 
-export const { handlers, auth } = NextAuth({
-	trustHost: true,
+export const authConfig: NextAuthConfig = {
 	pages: {
 		signIn: '/login',
 	},
@@ -28,16 +27,17 @@ export const { handlers, auth } = NextAuth({
 						password: credentials.password as string,
 					});
 
-					if (res)
+					if (!res) return null;
+
+					if (res) {
 						return {
-							id: res.access_token,
-							name: res.user.full_name,
+							id: res?.access_token ?? '',
+							name: res?.user.full_name,
 							email: res.user.email,
 							accessToken: res.access_token,
 							organizationPk: res.organization_pk,
 						};
-
-					if (!res) return null;
+					}
 				}
 
 				return null;
@@ -54,7 +54,15 @@ export const { handlers, auth } = NextAuth({
 		maxAge: 60 * 60, // 1 hour
 	},
 	callbacks: {
-		async jwt({ token, user }: { token: any; user: any }) {
+		async jwt({ token, user, trigger, session }) {
+			if (trigger === 'update' && session) {
+				token.id = session.id;
+				token.name = session.name;
+				token.email = session.email;
+				token.accessToken = session.accessToken;
+				token.organizationPk = session.organizationPk;
+			}
+
 			if (user) {
 				token.id = user.id;
 				token.name = user.name;
@@ -74,19 +82,15 @@ export const { handlers, auth } = NextAuth({
 
 			return session;
 		},
-		authorized({ auth, request }) {
+		authorized({ auth, request }: { auth: any; request: NextRequest }) {
 			const isLoggedIn = !!auth?.user;
-
-			if (request.nextUrl.pathname === '/' && isLoggedIn) {
-				return Response.redirect(new URL('/dashboard', request.nextUrl));
-			}
-
 			const isProtectedRoute = ProtectedRoutes.some((url) =>
 				request.nextUrl.pathname.includes(url)
 			);
-
-			if (isProtectedRoute) {
-				if (isLoggedIn) return true;
+			if (isProtectedRoute || request.nextUrl.pathname === '/') {
+				if (isLoggedIn) {
+					return true;
+				}
 				return false; // Redirect unauthenticated users to login page
 			} else if (isLoggedIn) {
 				return Response.redirect(new URL('/dashboard', request.nextUrl));
@@ -94,4 +98,6 @@ export const { handlers, auth } = NextAuth({
 			return true;
 		},
 	},
-});
+};
+
+export const { handlers, auth } = NextAuth(authConfig);

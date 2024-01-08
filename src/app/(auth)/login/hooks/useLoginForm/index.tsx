@@ -1,8 +1,8 @@
 import { ILoginPayload } from '@/services';
 import { ILoginFormValues } from './interfaces';
 import { useStatus } from '@/hooks';
-import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { signIn, getSession } from 'next-auth/react';
 
 const loginFormInitialValues: ILoginFormValues = {
 	email: '',
@@ -30,8 +30,6 @@ export const useLoginForm = () => {
 
 			if (!response?.error) {
 				onChangeStatus('success');
-
-				router.replace('/dashboard', { scroll: false });
 
 				return;
 			}

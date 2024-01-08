@@ -1,6 +1,7 @@
 import { ISession } from '@/interfaces';
 import { IClient, ICreateClientPayload } from '@/models';
 import { baseUrl } from '@/services/config';
+import { getOrganizationIdFromLocalStorage } from '@/utils';
 import { getSession } from 'next-auth/react';
 
 export const createClientService = async (

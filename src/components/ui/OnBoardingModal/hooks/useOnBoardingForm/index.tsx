@@ -8,6 +8,7 @@ import {
 	onBoardingServiceService,
 } from '@/services';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 const onBoardingFormInitialValues: IOnboardingForm = {
 	step: 0,
@@ -85,6 +86,8 @@ const onBoardingFormInitialValues: IOnboardingForm = {
 
 export const useOnBoardingForm = () => {
 	const [open, setOpen] = useState(true);
+	const { data: session, update } = useSession();
+
 	const onSubmit = async (
 		values: IOnboardingForm,
 		formikHelpers: FormikHelpers<IOnboardingForm>
@@ -112,6 +115,11 @@ export const useOnBoardingForm = () => {
 				sub_sector: values.bussines.sector,
 				how_you_know_us: values.bussines.howDidYouKnow,
 				country: values.bussines.country,
+			});
+
+			await update({
+				...session,
+				organizationPk: organizationResponse.id,
 			});
 
 			const professionalResponse = await onBoardingProfessionalService({

@@ -2,13 +2,15 @@ import { auth } from '@/auth';
 import { ISession } from '@/interfaces';
 import { ILocation } from '@/models';
 import { baseUrl } from '@/services/config';
+import { getOrganizationIdFromLocalStorage } from '@/utils';
 
 export const getLocationsServices = async () => {
 	const session = (await auth()) as unknown as ISession;
+	const organizationId = getOrganizationIdFromLocalStorage();
 
 	try {
 		const response = await fetch(
-			`${baseUrl}/api/organizations/${session?.organizationPk}/sedes/`,
+			`${baseUrl}/api/organizations/${organizationId}/sedes/`,
 			{
 				method: 'GET',
 				headers: {
